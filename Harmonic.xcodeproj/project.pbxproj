@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03044460199976B500F47756 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304445F199976B500F47756 /* AppDelegate.swift */; };
+		03044462199976B500F47756 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03044461199976B500F47756 /* ViewController.swift */; };
+		03044465199976B500F47756 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03044463199976B500F47756 /* Main.storyboard */; };
+		03044467199976B500F47756 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03044466199976B500F47756 /* Images.xcassets */; };
+		03044473199976B500F47756 /* HarmonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03044472199976B500F47756 /* HarmonicTests.swift */; };
+		0304447E1999771300F47756 /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
+		030444801999792C00F47756 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0304446D199976B500F47756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03044452199976B500F47756 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03044459199976B500F47756;
+			remoteInfo = Harmonic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0304445A199976B500F47756 /* Harmonic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Harmonic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0304445E199976B500F47756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0304445F199976B500F47756 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		03044461199976B500F47756 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		03044464199976B500F47756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		03044466199976B500F47756 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0304446C199976B500F47756 /* HarmonicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarmonicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03044471199976B500F47756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03044472199976B500F47756 /* HarmonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicTests.swift; sourceTree = "<group>"; };
+		0304447D1999771300F47756 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
+		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03044457199976B500F47756 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03044469199976B500F47756 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03044451199976B500F47756 = {
+			isa = PBXGroup;
+			children = (
+				0304447C1999770300F47756 /* Classes */,
+				0304445C199976B500F47756 /* Harmonic */,
+				0304446F199976B500F47756 /* HarmonicTests */,
+				0304445B199976B500F47756 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0304445B199976B500F47756 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0304445A199976B500F47756 /* Harmonic.app */,
+				0304446C199976B500F47756 /* HarmonicTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0304445C199976B500F47756 /* Harmonic */ = {
+			isa = PBXGroup;
+			children = (
+				0304445F199976B500F47756 /* AppDelegate.swift */,
+				03044461199976B500F47756 /* ViewController.swift */,
+				03044463199976B500F47756 /* Main.storyboard */,
+				0304447F1999792C00F47756 /* UserModel.swift */,
+				03044466199976B500F47756 /* Images.xcassets */,
+				0304445D199976B500F47756 /* Supporting Files */,
+			);
+			path = Harmonic;
+			sourceTree = "<group>";
+		};
+		0304445D199976B500F47756 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0304445E199976B500F47756 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0304446F199976B500F47756 /* HarmonicTests */ = {
+			isa = PBXGroup;
+			children = (
+				03044472199976B500F47756 /* HarmonicTests.swift */,
+				03044470199976B500F47756 /* Supporting Files */,
+			);
+			path = HarmonicTests;
+			sourceTree = "<group>";
+		};
+		03044470199976B500F47756 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				03044471199976B500F47756 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0304447C1999770300F47756 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0304447D1999771300F47756 /* HarmonicModel.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03044459199976B500F47756 /* Harmonic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03044476199976B500F47756 /* Build configuration list for PBXNativeTarget "Harmonic" */;
+			buildPhases = (
+				03044456199976B500F47756 /* Sources */,
+				03044457199976B500F47756 /* Frameworks */,
+				03044458199976B500F47756 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Harmonic;
+			productName = Harmonic;
+			productReference = 0304445A199976B500F47756 /* Harmonic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0304446B199976B500F47756 /* HarmonicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03044479199976B500F47756 /* Build configuration list for PBXNativeTarget "HarmonicTests" */;
+			buildPhases = (
+				03044468199976B500F47756 /* Sources */,
+				03044469199976B500F47756 /* Frameworks */,
+				0304446A199976B500F47756 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0304446E199976B500F47756 /* PBXTargetDependency */,
+			);
+			name = HarmonicTests;
+			productName = HarmonicTests;
+			productReference = 0304446C199976B500F47756 /* HarmonicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03044452199976B500F47756 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Josh Holtz";
+				TargetAttributes = {
+					03044459199976B500F47756 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					0304446B199976B500F47756 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 03044459199976B500F47756;
+					};
+				};
+			};
+			buildConfigurationList = 03044455199976B500F47756 /* Build configuration list for PBXProject "Harmonic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03044451199976B500F47756;
+			productRefGroup = 0304445B199976B500F47756 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03044459199976B500F47756 /* Harmonic */,
+				0304446B199976B500F47756 /* HarmonicTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03044458199976B500F47756 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03044465199976B500F47756 /* Main.storyboard in Resources */,
+				03044467199976B500F47756 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0304446A199976B500F47756 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03044456199976B500F47756 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0304447E1999771300F47756 /* HarmonicModel.swift in Sources */,
+				03044462199976B500F47756 /* ViewController.swift in Sources */,
+				030444801999792C00F47756 /* UserModel.swift in Sources */,
+				03044460199976B500F47756 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03044468199976B500F47756 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03044473199976B500F47756 /* HarmonicTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0304446E199976B500F47756 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03044459199976B500F47756 /* Harmonic */;
+			targetProxy = 0304446D199976B500F47756 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		03044463199976B500F47756 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03044464199976B500F47756 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		03044474199976B500F47756 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03044475199976B500F47756 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		03044477199976B500F47756 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Harmonic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		03044478199976B500F47756 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Harmonic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0304447A199976B500F47756 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Harmonic.app/Harmonic";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HarmonicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		0304447B199976B500F47756 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Harmonic.app/Harmonic";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HarmonicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03044455199976B500F47756 /* Build configuration list for PBXProject "Harmonic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03044474199976B500F47756 /* Debug */,
+				03044475199976B500F47756 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03044476199976B500F47756 /* Build configuration list for PBXNativeTarget "Harmonic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03044477199976B500F47756 /* Debug */,
+				03044478199976B500F47756 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		03044479199976B500F47756 /* Build configuration list for PBXNativeTarget "HarmonicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0304447A199976B500F47756 /* Debug */,
+				0304447B199976B500F47756 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 03044452199976B500F47756 /* Project object */;
+}
