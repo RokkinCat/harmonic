@@ -44,7 +44,6 @@ class HarmonicTests: XCTestCase {
         var error: NSError?
         var user = HarmonicModelMaker<UserModel>.createModel("{\"birthday\":\"1989-03-01\",\"first_name\":\"Josh\",\"friends\":[{\"first_name\":\"Red Ranger\"},{\"first_name\":\"Green Ranger\"}],\"last_name\":\"Holtz\",\"best_friend\":{\"first_name\":\"Bandit\",\"last_name\":\"The Cat\"}}", error: &error)
         
-        
         XCTAssertNotNil(user, "User should not be nil");
         self.commonUserTest(user!);
         
@@ -56,8 +55,8 @@ class HarmonicTests: XCTestCase {
         
         XCTAssertNotNil(users, "Users should not be nil")
         XCTAssertEqual(users!.count, 1, "Users count should be 1")
-        
-        let user = users?[0] as UserModel
+
+        let user = users![0] as UserModel
         self.commonUserTest(user)
     }
     

@@ -13,7 +13,7 @@ typealias JSONObject = Dictionary<String, AnyObject>
 typealias JSONArray = Array<JSONObject>
 
 // Used for monad for awesomely easy parsing
-operator infix >>> { associativity left precedence 150 }
+infix operator >>> { associativity left precedence 150 }
 
 func >>><A, B>(a: A?, f: A -> B?) -> B? {
     if let x = a {
@@ -23,15 +23,11 @@ func >>><A, B>(a: A?, f: A -> B?) -> B? {
     }
 }
 
-class _HarmonicModelBase: NSObject {
-    
-    required init() {
-        super.init()
-    }
-    
+protocol HarmonicMockProtocol {
+    class var scheme: String { get }
 }
 
-class HarmonicModel: _HarmonicModelBase {
+class HarmonicModel: NSObject {
     
     // MARK: Class
     
@@ -46,23 +42,8 @@ class HarmonicModel: _HarmonicModelBase {
         return model
     }
 
-    /**
-        Needed a garbage init method so the init() - with zero parameters - can be a convience method
-        
-        :param: this
-        :param: isSuch
-        :param: aHack
-    */
-    init(this : Bool, isSuch : Bool, aHack : Bool) {
-        
-    }
-    
-    /**
-        This is a convience method so that sublcasses aren't required to implement it
-        It is needed though for the self() call up above
-    */
-    convenience init() {
-        self.init(this: true, isSuch: true, aHack: true);
+    required override init() {
+        super.init()
     }
     
     /**
@@ -74,7 +55,7 @@ class HarmonicModel: _HarmonicModelBase {
     
 }
 
-class HarmonicModelMaker<T: HarmonicModel>: _HarmonicModelBase {
+class HarmonicModelMaker<T: HarmonicModel>: NSObject {
     
     /**
         :param: json The JSONObject being parsed
@@ -94,7 +75,7 @@ class HarmonicModelMaker<T: HarmonicModel>: _HarmonicModelBase {
         let jsonData = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding), allowLossyConversion: false)
         let json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as JSONObject
         
-        if (error) { return nil }
+        if (error != nil) { return nil }
         
         return createModel(json);
     }
@@ -107,7 +88,7 @@ class HarmonicModelMaker<T: HarmonicModel>: _HarmonicModelBase {
     class func createCollection(json : JSONArray) -> Array<T> {
         var models : Array<T> = []
         for (obj) in json {
-            models += T.create(obj)
+            models.append( T.create(obj) )
         }
         return models
     }
@@ -122,31 +103,18 @@ class HarmonicModelMaker<T: HarmonicModel>: _HarmonicModelBase {
         let jsonData = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding), allowLossyConversion: false)
         let json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as JSONArray
         
-        if (error) { return nil }
+        if (error != nil) { return nil }
         
         return createCollection(json)
     }
     
-    /**
-        Needed a garbage init method so the init() - with zero parameters - can be a convience method
-    
-        :param: this
-        :param: isSuch
-        :param: aHack
-    */
-    init(this : Bool, isSuch : Bool, aHack : Bool) {
-        
-    }
-    
-    /**
-        This is a convience method so that sublcasses aren't required to implement it
-        It is needed though for the self() call up above
-    */
-    convenience init() {
-        self.init(this: true, isSuch: true, aHack: true)
+    required override init() {
+        super.init()
     }
     
 }
+
+// MARK: Formatter extenstions
 
 extension HarmonicModel {
     
@@ -175,6 +143,8 @@ extension HarmonicModel {
     }
     
 }
+
+// MARK: Array extentions
 
 extension Array {
     

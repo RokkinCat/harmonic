@@ -12,7 +12,14 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.justModelStuff()
+        self.justNetworkStuff()
+    }
+    
+    func justModelStuff() {
+        println("MOCKED RESPONSE")
+        
         var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz",
             "best_friend" : ["first_name" : "Bandit", "last_name" : "The Cat"],
             "friends" : [ ["first_name" : "Red Ranger"], ["first_name" : "Green Ranger"] ],
@@ -38,8 +45,71 @@ class ViewController: UIViewController {
             (friend) -> Void in
             println("\tFriend - \(friend.firstName)")
         })
+        
+        println("\n\n")
     }
+    
+    func justNetworkStuff() {
+        
+        Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/user.json", parameters: nil, encoding: .JSON(options: nil))
+            .responseJSON {(request, response, JSON, error) in
+                println("MOCKED USER API")
+                
+                var user = UserModel.create(JSON as JSONObject)
+                println("From Mock user' API - \(user.firstName)")
+                
+            }
+        
+        Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/users.json", parameters: nil, encoding: .JSON(options: nil))
+            .responseJSON {(request, response, JSON, error) in
+                println("MOCKED USERS API")
+                
+                var users = HarmonicModelMaker<UserModel>.createCollection(JSON as JSONArray)
+                users.each({
+                    (user) -> () in
+                    println("From Mock users API - \(user.firstName)")
+                })
+                
+            }
+        
+    }
+    
 
+}
+
+class MockProtocol : NSURLProtocol {
+    
+    override class func canInitWithRequest(request: NSURLRequest) -> Bool {
+        println("DUDE")
+        println("Can init - \(request.URL.absoluteString)")
+        return true
+    }
+    
+    override class func canonicalRequestForRequest(request: NSURLRequest!) -> NSURLRequest! {
+        println("SUP")
+        return request
+    }
+    
+    override func startLoading() {
+        
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                //                    [client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+                //                    [client URLProtocol:self didLoadData:response.data];
+                //                    [client URLProtocolDidFinishLoading:self];
+                
+            })
+            
+        })
+        
+    }
+    
+    override func stopLoading() {
+        
+    }
+    
 }
 
 extension HarmonicModel {

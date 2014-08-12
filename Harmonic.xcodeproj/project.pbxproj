@@ -18,6 +18,7 @@
 		03B697931999B80D0001511B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
 		03B697961999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
 		03B697971999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
+		03E39FBE199ACC4500C8C937 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B69799199AB4180001511B /* Alamofire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		0304447D1999771300F47756 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
 		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		03B697951999B9220001511B /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
+		03B69799199AB4180001511B /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		0304445C199976B500F47756 /* Harmonic */ = {
 			isa = PBXGroup;
 			children = (
+				03B69798199AB4180001511B /* Lib */,
 				0304445F199976B500F47756 /* AppDelegate.swift */,
 				03044461199976B500F47756 /* ViewController.swift */,
 				03044463199976B500F47756 /* Main.storyboard */,
@@ -136,6 +139,14 @@
 			);
 			name = TestModels;
 			sourceTree = "<group>";
+		};
+		03B69798199AB4180001511B /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				03B69799199AB4180001511B /* Alamofire.swift */,
+			);
+			path = Lib;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -236,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E39FBE199ACC4500C8C937 /* Alamofire.swift in Sources */,
 				0304447E1999771300F47756 /* HarmonicModel.swift in Sources */,
 				03044462199976B500F47756 /* ViewController.swift in Sources */,
 				03B697961999B9220001511B /* BrokenUserModel.swift in Sources */,
