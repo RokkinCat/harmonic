@@ -38,7 +38,7 @@ var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" :
 var jsons = [json]
 
 // Single model
-var user = UserModel.create(json)
+var user = UserModel.create(json) // OR HarmonicModelMaker<UserModel>.createModel(json)
 println("User - \(user.firstName) \(user.lastName) \(user.birthday)")
 println("\tBest Friend - \(user.bestFriend?.firstName) \(user.bestFriend?.lastName)")
 user.friends?.each( {
@@ -63,8 +63,8 @@ class UserModel: HarmonicModel {
     override func parse(json : JSONObject) {
         self.firstName = json["first_name"] >>> ToString
         self.lastName = json["last_name"] >>> ToString
-        self.bestFriend = json["best_friend"] >>> ToJSONObject >>> UserModel.create
-        self.friends = json["friends"] >>> ToJSONArray >>> HarmonicModelCollection<UserModel>.create
+        self.bestFriend = json["best_friend"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
+        self.friends = json["friends"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
         self.birthday = json["birthday"] >>> ToBirthday
     }
     
