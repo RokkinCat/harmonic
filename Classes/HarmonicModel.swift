@@ -86,9 +86,23 @@ class HarmonicModelMaker<T: HarmonicModel>: _HarmonicModelBase {
     }
     
     /**
+        :param: jsonString The string representation of the JSONObject being parsed
+        
+        :returns: The HarmonicModels filled with glorious data
+    */
+    class func createModel(jsonString : String, inout error : NSError?) -> T? {
+        let jsonData = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding), allowLossyConversion: false)
+        let json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as JSONObject
+        
+        if (error) { return nil }
+        
+        return createModel(json);
+    }
+    
+    /**
         :param: json The JSONArray being parsed
         
-        :returns: The HarmonicModels  filled with glorious data
+        :returns: The HarmonicModels filled with glorious data
     */
     class func createCollection(json : JSONArray) -> Array<T> {
         var models : Array<T> = []
@@ -96,6 +110,21 @@ class HarmonicModelMaker<T: HarmonicModel>: _HarmonicModelBase {
             models += T.create(obj)
         }
         return models
+    }
+    
+    /**
+        :param: jsonString The string representation of the JSONArray being parsed
+        
+        :returns: The HarmonicModels filled with glorious data
+    */
+    class func createCollection(jsonString : String, inout error : NSError?) -> Array<T>? {
+        
+        let jsonData = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding), allowLossyConversion: false)
+        let json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as JSONArray
+        
+        if (error) { return nil }
+        
+        return createCollection(json)
     }
     
     /**

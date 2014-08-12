@@ -14,6 +14,10 @@
 		03044473199976B500F47756 /* HarmonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03044472199976B500F47756 /* HarmonicTests.swift */; };
 		0304447E1999771300F47756 /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
 		030444801999792C00F47756 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
+		03B697921999B80A0001511B /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
+		03B697931999B80D0001511B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
+		03B697961999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
+		03B697971999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,7 @@
 		03044472199976B500F47756 /* HarmonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicTests.swift; sourceTree = "<group>"; };
 		0304447D1999771300F47756 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
 		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		03B697951999B9220001511B /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +88,7 @@
 				0304445F199976B500F47756 /* AppDelegate.swift */,
 				03044461199976B500F47756 /* ViewController.swift */,
 				03044463199976B500F47756 /* Main.storyboard */,
-				0304447F1999792C00F47756 /* UserModel.swift */,
+				03B697941999B9010001511B /* TestModels */,
 				03044466199976B500F47756 /* Images.xcassets */,
 				0304445D199976B500F47756 /* Supporting Files */,
 			);
@@ -121,6 +126,15 @@
 				0304447D1999771300F47756 /* HarmonicModel.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		03B697941999B9010001511B /* TestModels */ = {
+			isa = PBXGroup;
+			children = (
+				0304447F1999792C00F47756 /* UserModel.swift */,
+				03B697951999B9220001511B /* BrokenUserModel.swift */,
+			);
+			name = TestModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +238,7 @@
 			files = (
 				0304447E1999771300F47756 /* HarmonicModel.swift in Sources */,
 				03044462199976B500F47756 /* ViewController.swift in Sources */,
+				03B697961999B9220001511B /* BrokenUserModel.swift in Sources */,
 				030444801999792C00F47756 /* UserModel.swift in Sources */,
 				03044460199976B500F47756 /* AppDelegate.swift in Sources */,
 			);
@@ -233,6 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03B697921999B80A0001511B /* HarmonicModel.swift in Sources */,
+				03B697971999B9220001511B /* BrokenUserModel.swift in Sources */,
+				03B697931999B80D0001511B /* UserModel.swift in Sources */,
 				03044473199976B500F47756 /* HarmonicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +431,7 @@
 				03044478199976B500F47756 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03044479199976B500F47756 /* Build configuration list for PBXNativeTarget "HarmonicTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +440,7 @@
 				0304447B199976B500F47756 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
