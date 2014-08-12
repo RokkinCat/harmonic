@@ -19,8 +19,8 @@ class UserModel: HarmonicModel {
     override func parse(json : JSONObject) {
         self.firstName = json["first_name"] >>> ToString
         self.lastName = json["last_name"] >>> ToString
-        self.bestFriend = json["best_friend"] >>> ToJSONObject >>> UserModel.create
-        self.friends = json["friends"] >>> ToJSONArray >>> HarmonicModelCollection<UserModel>.create
+        self.bestFriend = json["best_friend"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
+        self.friends = json["friends"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
         self.birthday = json["birthday"] >>> ToBirthday
     }
     

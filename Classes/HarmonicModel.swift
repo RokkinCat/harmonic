@@ -56,14 +56,18 @@ class HarmonicModel: _HarmonicModelBase {
     
 }
 
-class HarmonicModelCollection<T: HarmonicModel>: _HarmonicModelBase {
+class HarmonicModelMaker<T: HarmonicModel>: _HarmonicModelBase {
     
-    class func create(json : Array<JSONObject>) -> Array<T> {
-        var models : Array<T> = [];
+    class func createModel(json : JSONObject) -> T {
+        return T.create(json)
+    }
+    
+    class func createCollection(json : Array<JSONObject>) -> Array<T> {
+        var models : Array<T> = []
         for (obj) in json {
-            models += T.create(obj);
+            models += T.create(obj)
         }
-        return models;
+        return models
     }
     
     // Needed a garbage init method so the init() - with zero parameters - can be a convience method
@@ -74,7 +78,7 @@ class HarmonicModelCollection<T: HarmonicModel>: _HarmonicModelBase {
     // This is a convience method so that sublcasses aren't required to implement it
     // This is needed though for the self() call up above
     convenience init() {
-        self.init(this: true, isSuch: true, aHack: true);
+        self.init(this: true, isSuch: true, aHack: true)
     }
     
 }
