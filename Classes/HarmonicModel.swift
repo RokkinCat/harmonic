@@ -8,9 +8,11 @@
 
 import Foundation
 
+// Cause typing things is hard
 typealias JSONObject = Dictionary<String, AnyObject>
 typealias JSONArray = Array<JSONObject>
 
+// Used for monad for awesomely easy parsing
 operator infix >>> { associativity left precedence 150 }
 
 func >>><A, B>(a: A?, f: A -> B?) -> B? {
@@ -33,36 +35,62 @@ class HarmonicModel: _HarmonicModelBase {
     
     // MARK: Class
     
+    /**
+        :param: json The JSONObject being parsed
+        
+        :returns: The HarmonicModel filled with glorious data
+    */
     class func create(json : JSONObject) -> Self {
         var model = self()
         model.parse(json);
         return model
     }
 
-    // Needed a garbage init method so the init() - with zero parameters - can be a convience method
+    /**
+        Needed a garbage init method so the init() - with zero parameters - can be a convience method
+        
+        :param: this
+        :param: isSuch
+        :param: aHack
+    */
     init(this : Bool, isSuch : Bool, aHack : Bool) {
         
     }
     
-    // This is a convience method so that sublcasses aren't required to implement it
-    // This is needed though for the self() call up above
+    /**
+        This is a convience method so that sublcasses aren't required to implement it
+        It is needed though for the self() call up above
+    */
     convenience init() {
         self.init(this: true, isSuch: true, aHack: true);
     }
     
+    /**
+        This is the method that gets overwritten for each subclasses HarmonicModel
+    */
     func parse(json : JSONObject) {
-        
+        fatalError("Must Override")
     }
     
 }
 
 class HarmonicModelMaker<T: HarmonicModel>: _HarmonicModelBase {
     
+    /**
+        :param: json The JSONObject being parsed
+    
+        :return: The HarmonicModel filled with glorious data
+    */
     class func createModel(json : JSONObject) -> T {
         return T.create(json)
     }
     
-    class func createCollection(json : Array<JSONObject>) -> Array<T> {
+    /**
+        :param: json The JSONArray being parsed
+        
+        :returns: The HarmonicModels  filled with glorious data
+    */
+    class func createCollection(json : JSONArray) -> Array<T> {
         var models : Array<T> = []
         for (obj) in json {
             models += T.create(obj)
@@ -70,13 +98,21 @@ class HarmonicModelMaker<T: HarmonicModel>: _HarmonicModelBase {
         return models
     }
     
-    // Needed a garbage init method so the init() - with zero parameters - can be a convience method
+    /**
+        Needed a garbage init method so the init() - with zero parameters - can be a convience method
+    
+        :param: this
+        :param: isSuch
+        :param: aHack
+    */
     init(this : Bool, isSuch : Bool, aHack : Bool) {
         
     }
     
-    // This is a convience method so that sublcasses aren't required to implement it
-    // This is needed though for the self() call up above
+    /**
+        This is a convience method so that sublcasses aren't required to implement it
+        It is needed though for the self() call up above
+    */
     convenience init() {
         self.init(this: true, isSuch: true, aHack: true)
     }
@@ -91,6 +127,10 @@ extension HarmonicModel {
     
     func ToJSONArray(object: AnyObject) -> JSONArray? {
         return object as? JSONArray
+    }
+    
+    func ToFloat(object: AnyObject) -> Bool? {
+        return object as? Bool
     }
     
     func ToFloat(object: AnyObject) -> Float? {
