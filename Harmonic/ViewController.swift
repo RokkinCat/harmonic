@@ -50,27 +50,23 @@ class ViewController: UIViewController {
     }
     
     func justNetworkStuff() {
-        
+
         Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/user.json", parameters: nil, encoding: .JSON(options: nil))
-            .responseJSON {(request, response, JSON, error) in
+            .responseHarmonic(HarmonicModelMaker<UserModel>.self, completionHandler: {(request, response, model, error) in
                 println("MOCKED USER API")
-                
-                var user = UserModel.create(JSON as JSONObject)
-                println("From Mock user' API - \(user.firstName)")
-                
-            }
+                println("Model \(model?.firstName) \(model?.lastName) \(model?.birthday)")
+            })
         
         Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/users.json", parameters: nil, encoding: .JSON(options: nil))
-            .responseJSON {(request, response, JSON, error) in
-                println("MOCKED USERS API")
+            .responseHarmonics(HarmonicModelMaker<UserModel>.self, completionHandler: {(request, response, models, error) in
                 
-                var users = HarmonicModelMaker<UserModel>.createCollection(JSON as JSONArray)
-                users.each({
+                println("MOCKED USERS API")
+                models?.each({
                     (user) -> () in
                     println("From Mock users API - \(user.firstName)")
                 })
                 
-            }
+            })
         
     }
     

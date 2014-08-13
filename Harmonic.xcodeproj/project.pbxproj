@@ -18,6 +18,7 @@
 		03B697931999B80D0001511B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
 		03B697961999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
 		03B697971999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
+		03CCC67B199B09330009D477 /* HarmonicAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CCC67A199B09330009D477 /* HarmonicAlamofire.swift */; };
 		03E39FBE199ACC4500C8C937 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B69799199AB4180001511B /* Alamofire.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		03B697951999B9220001511B /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
 		03B69799199AB4180001511B /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		03CCC67A199B09330009D477 /* HarmonicAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicAlamofire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				0304447D1999771300F47756 /* HarmonicModel.swift */,
+				03CCC679199B09070009D477 /* Alamofire */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -147,6 +150,14 @@
 			);
 			path = Lib;
 			sourceTree = SOURCE_ROOT;
+		};
+		03CCC679199B09070009D477 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				03CCC67A199B09330009D477 /* HarmonicAlamofire.swift */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -252,6 +263,7 @@
 				03044462199976B500F47756 /* ViewController.swift in Sources */,
 				03B697961999B9220001511B /* BrokenUserModel.swift in Sources */,
 				030444801999792C00F47756 /* UserModel.swift in Sources */,
+				03CCC67B199B09330009D477 /* HarmonicAlamofire.swift in Sources */,
 				03044460199976B500F47756 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
