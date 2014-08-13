@@ -118,12 +118,20 @@ class HarmonicModelMaker<T: HarmonicModel>: NSObject {
 
 extension HarmonicModel {
     
-    func ToJSONObject(object: AnyObject) -> JSONObject? {
+    class func ToJSONObject(object: AnyObject) -> JSONObject? {
         return object as? JSONObject
     }
     
-    func ToJSONArray(object: AnyObject) -> JSONArray? {
+    class func ToJSONArray(object: AnyObject) -> JSONArray? {
         return object as? JSONArray
+    }
+    
+    func ToJSONObject(object: AnyObject) -> JSONObject? {
+        return HarmonicModel.ToJSONObject(object)
+    }
+    
+    func ToJSONArray(object: AnyObject) -> JSONArray? {
+        return HarmonicModel.ToJSONArray(object)
     }
     
     func ToFloat(object: AnyObject) -> Bool? {
