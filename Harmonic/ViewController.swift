@@ -51,22 +51,25 @@ class ViewController: UIViewController {
     
     func justNetworkStuff() {
 
-        Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/user.json", parameters: nil, encoding: .JSON(options: nil))
-            .responseHarmonic(HarmonicModelMaker<UserModel>.self, completionHandler: {(request, response, model, error) in
-                println("MOCKED USER API")
-                println("Model \(model?.firstName) \(model?.lastName) \(model?.birthday)")
-            })
+        println("MOCKED USER API")
         
-        Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/users.json", parameters: nil, encoding: .JSON(options: nil))
-            .responseHarmonics(HarmonicModelMaker<UserModel>.self, completionHandler: {(request, response, models, error) in
+        Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/user.json")
+            .responseHarmonic(HarmonicModelMaker<UserModel>.self) {(request, response, model, error) in
+                println("From Mock user.json API - \(model?.firstName) \(model?.lastName) \(model?.birthday)")
                 
-                println("MOCKED USERS API")
+                return // Need to return otherwise get compile error
+            }
+        
+        Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/users.json")
+            .responseHarmonics(HarmonicModelMaker<UserModel>.self) {(request, response, models, error) in
+                
                 models?.each({
                     (user) -> () in
-                    println("From Mock users API - \(user.firstName)")
+                    println("From Mock users.json API - \(user.firstName)")
                 })
                 
-            })
+                return // Need to return otherwise get compile error
+            }
         
     }
     
