@@ -78,62 +78,23 @@ class ViewController: UIViewController {
         HarmonicConfig.adapter = HarmonicAlamofireAdapter()
         
         // Gets collection of users
-        UserModel.get("https://raw.githubusercontent.com/joshdholtz/harmonic/master/users.json") {(request, response, models, error) in
+        UserModel.get {(request, response, models, error) in
             
-            var users = models as? [BrokenUserModel]
+            var users = models as? [UserModel]
             users?.each({
                 (user) -> () in
                 println("From Mock users.json API with model - \(user.firstName)")
             })
-            
-            return // Need to return otherwise get compile error
+
         }
         
         // Gets user model
         var user = UserModel()
-        user.get("https://raw.githubusercontent.com/joshdholtz/harmonic/master/user.json") {(request, response, model, error) in
-            
+        user.get {(request, response, model, error) in
             println("From Mock user.json API with model - \(user.firstName)")
-            
-            return // Need to return otherwise get compile error
         }
     }
 
-}
-
-class MockProtocol : NSURLProtocol {
-    
-    override class func canInitWithRequest(request: NSURLRequest) -> Bool {
-        println("DUDE")
-        println("Can init - \(request.URL.absoluteString)")
-        return true
-    }
-    
-    override class func canonicalRequestForRequest(request: NSURLRequest!) -> NSURLRequest! {
-        println("SUP")
-        return request
-    }
-    
-    override func startLoading() {
-        
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                //                    [client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-                //                    [client URLProtocol:self didLoadData:response.data];
-                //                    [client URLProtocolDidFinishLoading:self];
-                
-            })
-            
-        })
-        
-    }
-    
-    override func stopLoading() {
-        
-    }
-    
 }
 
 extension HarmonicModel {

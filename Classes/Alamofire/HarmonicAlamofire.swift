@@ -33,19 +33,43 @@ extension Alamofire.Request {
             let models  = JSON >>> HarmonicModel.ToJSONArray >>> modelMaker.createCollection
             completionHandler(request, response, models, error)
         })
+        
     }
     
 }
 
 class HarmonicAlamofireAdapter: HarmonicNetworkAdapter {
     
-    func getCollection(url: String, callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void) {
-        Alamofire.request(.GET, url)
+    func get(url: String, parameters: [String: AnyObject]? , callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void) {
+        
+        Alamofire.request(.GET, url, parameters: parameters)
             .responseJSON {(request, response, JSON, error) in
-                
                 callback(request: request, response: response, json: JSON, error: error)
-                
             }
+    }
+    
+    func post(url: String, parameters: [String: AnyObject]? , callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void) {
+        
+        Alamofire.request(.POST, url, parameters: parameters)
+            .responseJSON {(request, response, JSON, error) in
+                callback(request: request, response: response, json: JSON, error: error)
+        }
+    }
+    
+    func put(url: String, parameters: [String: AnyObject]? , callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void) {
+        
+        Alamofire.request(.PUT, url, parameters: parameters)
+            .responseJSON {(request, response, JSON, error) in
+                callback(request: request, response: response, json: JSON, error: error)
+        }
+    }
+    
+    func delete(url: String, parameters: [String: AnyObject]? , callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void) {
+        
+        Alamofire.request(.DELETE, url, parameters: parameters)
+            .responseJSON {(request, response, JSON, error) in
+                callback(request: request, response: response, json: JSON, error: error)
+        }
     }
     
 }
