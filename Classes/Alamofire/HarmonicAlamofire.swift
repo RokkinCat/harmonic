@@ -36,3 +36,32 @@ extension Alamofire.Request {
     }
     
 }
+
+class HarmonicAlamofireAdapter: HarmonicNetworkAdapter {
+    
+    func getCollection(url: String, callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void) {
+        Alamofire.request(.GET, url)
+            .responseJSON {(request, response, JSON, error) in
+                
+                callback(request: request, response: response, json: JSON, error: error)
+                
+            }
+    }
+    
+}
+
+//
+//extension HarmonicModel {
+//    
+//    class API {
+//        
+//        class func routeUrl() -> String {
+//            fatalError("Need to override routeUrl()")
+//            return ""
+//        }
+//        
+//        
+//        
+//    }
+//    
+//}

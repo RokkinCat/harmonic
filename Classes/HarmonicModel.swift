@@ -23,13 +23,12 @@ func >>><A, B>(a: A?, f: A -> B?) -> B? {
     }
 }
 
-protocol HarmonicMockProtocol {
-    class var scheme: String { get }
+struct HarmonicConfig {
+    static var adapter: HarmonicNetworkAdapter?
+    
 }
 
 class HarmonicModel: NSObject {
-    
-    // MARK: Class
     
     /**
         :param: json The JSONObject being parsed
@@ -37,6 +36,12 @@ class HarmonicModel: NSObject {
         :returns: The HarmonicModel filled with glorious data
     */
     class func create(json : JSONObject) -> Self {
+        var model = self()
+        model.parse(json);
+        return model
+    }
+    
+    class func make(json : JSONObject) -> HarmonicModel {
         var model = self()
         model.parse(json);
         return model
@@ -51,6 +56,44 @@ class HarmonicModel: NSObject {
     */
     func parse(json : JSONObject) {
         fatalError("Must Override")
+    }
+    
+    class func get(url: String, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {
+        
+        var c = self;
+        var tja = ToJSONArray
+        
+        HarmonicConfig.adapter?.getCollection(url) {(request, response, JSON, error) in
+            
+            var ja: JSONArray? = JSON as? JSONArray
+            
+            var models: [HarmonicModel] = []
+            for obj in ja! {
+                let model = c()
+                model.parse(obj)
+                models.append(model)
+            }
+            
+            callback(request: request, response: response, models: models, error: error)
+            
+            return
+        }
+        
+    }
+    
+    func get(url: String, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicModel?, error: NSError?) -> Void) {
+        
+        var model = self
+        
+        HarmonicConfig.adapter?.getCollection(url) {(request, response, JSON, error) in
+            
+            var jo: JSONObject? = JSON as? JSONObject
+            model.parse(jo!)
+            
+            callback(request: request, response: response, model: model, error: error)
+            
+            return
+        }
     }
     
 }
@@ -162,5 +205,11 @@ extension Array {
         }
         return self
     }
+    
+}
+
+protocol HarmonicNetworkAdapter {
+    
+    func getCollection(url: String, callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void);
     
 }

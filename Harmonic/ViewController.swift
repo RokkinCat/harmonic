@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         
         self.justModelStuff()
         self.justNetworkStuff()
+        self.justModelNetworkStuff()
     }
     
     func justModelStuff() {
@@ -73,6 +74,30 @@ class ViewController: UIViewController {
         
     }
     
+    func justModelNetworkStuff() {
+        HarmonicConfig.adapter = HarmonicAlamofireAdapter()
+        
+        // Gets collection of users
+        UserModel.get("https://raw.githubusercontent.com/joshdholtz/harmonic/master/users.json") {(request, response, models, error) in
+            
+            var users = models as? [BrokenUserModel]
+            users?.each({
+                (user) -> () in
+                println("From Mock users.json API with model - \(user.firstName)")
+            })
+            
+            return // Need to return otherwise get compile error
+        }
+        
+        // Gets user model
+        var user = UserModel()
+        user.get("https://raw.githubusercontent.com/joshdholtz/harmonic/master/user.json") {(request, response, model, error) in
+            
+            println("From Mock user.json API with model - \(user.firstName)")
+            
+            return // Need to return otherwise get compile error
+        }
+    }
 
 }
 
