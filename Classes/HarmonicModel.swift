@@ -174,6 +174,8 @@ extension Array {
 
 protocol HarmonicNetworkAdapter {
     
+    func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void)
+    
     func get(url: String, parameters: [String: AnyObject]? , callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void)
     
     func post(url: String, parameters: [String: AnyObject]? , callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void)
@@ -186,13 +188,26 @@ protocol HarmonicNetworkAdapter {
 
 extension HarmonicModel {
     
+    class func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {
+        
+        var c = {(json: JSONObject) -> HarmonicModel in
+            var model = self(); model.parse(json); return model
+        };
+        
+        HarmonicConfig.adapter?.request(request) {(request, response, JSON, error) in
+            var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+            callback(request: request, response: response, models: models, error: error)
+        }
+        
+    }
+    
     class func get(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {
         
         var c = {(json: JSONObject) -> HarmonicModel in
             var model = self(); model.parse(json); return model
         };
         
-        HarmonicConfig.adapter?.get(url, parameters: nil) {(request, response, JSON, error) in
+        HarmonicConfig.adapter?.get(url, parameters: parameters) {(request, response, JSON, error) in
             var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
             callback(request: request, response: response, models: models, error: error)
         }
@@ -205,7 +220,7 @@ extension HarmonicModel {
             var model = self(); model.parse(json); return model
         };
         
-        HarmonicConfig.adapter?.post(url, parameters: nil) {(request, response, JSON, error) in
+        HarmonicConfig.adapter?.post(url, parameters: parameters) {(request, response, JSON, error) in
             var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
             callback(request: request, response: response, models: models, error: error)
         }
@@ -218,7 +233,7 @@ extension HarmonicModel {
             var model = self(); model.parse(json); return model
         };
         
-        HarmonicConfig.adapter?.put(url, parameters: nil) {(request, response, JSON, error) in
+        HarmonicConfig.adapter?.put(url, parameters: parameters) {(request, response, JSON, error) in
             var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
             callback(request: request, response: response, models: models, error: error)
         }
@@ -231,7 +246,7 @@ extension HarmonicModel {
             var model = self(); model.parse(json); return model
         };
         
-        HarmonicConfig.adapter?.delete(url, parameters: nil) {(request, response, JSON, error) in
+        HarmonicConfig.adapter?.delete(url, parameters: parameters) {(request, response, JSON, error) in
             var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
             callback(request: request, response: response, models: models, error: error)
         }
@@ -241,6 +256,16 @@ extension HarmonicModel {
 }
 
 extension HarmonicModel {
+    
+    func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicModel?, error: NSError?) -> Void) {
+        
+        var model = self
+        HarmonicConfig.adapter?.request(request) {(request, response, JSON, error) in
+            if (JSON is JSONObject) { model.parse(JSON as JSONObject) }
+            callback(request: request, response: response, model: model, error: error)
+        }
+        
+    }
     
     func get(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicModel?, error: NSError?) -> Void) {
         

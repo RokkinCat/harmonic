@@ -45,6 +45,7 @@ class UserModel: HarmonicModel {
         // Validates that we have login
         if let error = self.validate() {
             callback(request: nil, response: nil, models: nil, error: error)
+            return
         }
         
         // Gets user json object

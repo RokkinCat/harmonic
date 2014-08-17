@@ -24,9 +24,7 @@ class RepoModel: HarmonicModel {
     class func get(user: UserModel, searchParameters parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {
         
         // Validates that we have login
-        if let error = user.validate() {
-            callback(request: nil, response: nil, models: nil, error: error)
-        }
+        if let error = user.validate() { callback(request: nil, response: nil, models: nil, error: error); return }
         
         var url = "https://api.github.com/users/\(user.login!)/repos"
         get(url, parameters: parameters, callback: callback)

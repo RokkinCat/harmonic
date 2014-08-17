@@ -40,6 +40,16 @@ extension Alamofire.Request {
 
 class HarmonicAlamofireAdapter: HarmonicNetworkAdapter {
     
+    func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void) {
+        
+        let manager = Alamofire.Manager.sharedInstance
+        let alamoRequest = manager.request(request)
+        
+        alamoRequest.responseJSON {(request, response, JSON, error) in
+            callback(request: request, response: response, json: JSON, error: error)
+        }
+    }
+    
     func get(url: String, parameters: [String: AnyObject]? , callback: (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void) {
         
         Alamofire.request(.GET, url, parameters: parameters)
