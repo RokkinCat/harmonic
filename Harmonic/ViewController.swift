@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.justDoStuff()
+    }
+    
+    func justDoStuff() {
         self.justModelStuff()
         self.justNetworkStuff()
         self.justModelNetworkStuff()
