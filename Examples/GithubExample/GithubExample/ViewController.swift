@@ -22,7 +22,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         
         // Need this for models to know which network adapter to use
         // This should probably go in AppDelegate but putting it here cause yeah
-        HarmonicConfig.adapter = HarmonicAlamofireAdapter()
+        HarmonicConfig.adapter = HarmonicAlamofireAdapter(manager: Alamofire.Manager(), encoding: Alamofire.ParameterEncoding.URL)
+        
         GithubAuth.Config.redirectURI = "harmonicexample://githubcallback"
         GithubAuth.Config.clientId = "5e2ece3c78578d4a7980"
         GithubAuth.Config.clientSecret = "0aef7d2b1743d161f06c3d75defa7cb2a90b0ced"
