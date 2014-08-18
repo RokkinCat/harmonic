@@ -12,7 +12,19 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        self.justDoStuff()
+    }
+    
+    func justDoStuff() {
+        self.justModelStuff()
+        self.justNetworkStuff()
+        self.justModelNetworkStuff()
+    }
+    
+    func justModelStuff() {
+        println("MOCKED RESPONSE")
+        
         var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz",
             "best_friend" : ["first_name" : "Bandit", "last_name" : "The Cat"],
             "friends" : [ ["first_name" : "Red Ranger"], ["first_name" : "Green Ranger"] ],
@@ -38,6 +50,53 @@ class ViewController: UIViewController {
             (friend) -> Void in
             println("\tFriend - \(friend.firstName)")
         })
+        
+        println("\n\n")
+    }
+    
+    func justNetworkStuff() {
+
+        println("MOCKED USER API")
+        
+        Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/user.json")
+            .responseHarmonic(HarmonicModelMaker<UserModel>.self) {(request, response, model, error) in
+                println("From Mock user.json API - \(model?.firstName) \(model?.lastName) \(model?.birthday)")
+                
+                return // Need to return otherwise get compile error
+            }
+        
+        Alamofire.request(.GET, "https://raw.githubusercontent.com/joshdholtz/harmonic/master/users.json")
+            .responseHarmonics(HarmonicModelMaker<UserModel>.self) {(request, response, models, error) in
+                
+                models?.each({
+                    (user) -> () in
+                    println("From Mock users.json API - \(user.firstName)")
+                })
+                
+                return // Need to return otherwise get compile error
+            }
+        
+    }
+    
+    func justModelNetworkStuff() {
+        HarmonicConfig.adapter = HarmonicAlamofireAdapter()
+        
+        // Gets collection of users
+        UserModel.get {(request, response, models, error) in
+            
+            var users = models as? [UserModel]
+            users?.each({
+                (user) -> () in
+                println("From Mock users.json API with model - \(user.firstName)")
+            })
+
+        }
+        
+        // Gets user model
+        var user = UserModel()
+        user.get {(request, response, model, error) in
+            println("From Mock user.json API with model - \(user.firstName)")
+        }
     }
 
 }

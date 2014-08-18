@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4F0927BF-D6EB-4953-95BD-042A0E5C15F5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Harmonic</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FA21BDD7-301A-411E-AAB8-D208880DF08D</key>
+		<string>ssh://github.com/joshdholtz/harmonic.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Harmonic.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FA21BDD7-301A-411E-AAB8-D208880DF08D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/joshdholtz/harmonic.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FA21BDD7-301A-411E-AAB8-D208880DF08D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FA21BDD7-301A-411E-AAB8-D208880DF08D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Harmonic</string>
+		</dict>
+	</array>
+</dict>
+</plist>
