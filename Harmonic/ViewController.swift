@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
                             
@@ -101,9 +102,9 @@ class ViewController: UIViewController {
 
 }
 
-extension HarmonicModel {
+struct MyCustomFormatter {
     
-    func ToBirthday(object: AnyObject) -> NSDate? {
+    static func ToBirthday(object: AnyObject) -> NSDate? {
         
         var date: NSDate?
         

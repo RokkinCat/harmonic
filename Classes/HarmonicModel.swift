@@ -13,7 +13,7 @@ typealias JSONObject = Dictionary<String, AnyObject>
 typealias JSONArray = Array<JSONObject>
 
 // Used for monad for awesomely easy parsing
-infix operator >>> { associativity left precedence 150 }
+infix operator >>> { associativity left precedence 160 }
 
 func >>><A, B>(a: A?, f: A -> B?) -> B? {
     if let x = a {
@@ -60,80 +60,9 @@ class HarmonicModel: NSObject {
         _json = json
     }
     
-}
+    // MARK: Formatters
 
-class HarmonicModelMaker<T: HarmonicModel>: NSObject {
-    
-    /**
-    Createsa a model from a JSON string
-    
-    :param: json The JSONObject being parsed
-
-    :return: The HarmonicModel filled with glorious data
-    */
-    class func createModel(json : JSONObject) -> T {
-        return T.create(json)
-    }
-    
-    /**
-    Creates a model from a JSONObject
-    
-    :param: jsonString The string representation of the JSONObject being parsed
-    
-    :returns: The HarmonicModels filled with glorious data
-    */
-    class func createModel(jsonString : String, inout error : NSError?) -> T? {
-        let jsonData = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding), allowLossyConversion: false)
-        let json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as JSONObject
-        
-        if (error != nil) { return nil }
-        
-        return createModel(json);
-    }
-    
-    /**
-    Creates a collection of models from a JSONArray
-    
-    :param: json The JSONArray being parsed
-    
-    :returns: The HarmonicModels filled with glorious data
-    */
-    class func createCollection(json : JSONArray) -> Array<T> {
-        var models : Array<T> = []
-        for (obj) in json {
-            models.append( T.create(obj) )
-        }
-        return models
-    }
-    
-    /**
-    Createsa a collection of models from a JSON string
-    
-    :param: jsonString The string representation of the JSONArray being parsed
-    
-    :returns: The HarmonicModels filled with glorious data
-    */
-    class func createCollection(jsonString : String, inout error : NSError?) -> Array<T>? {
-        
-        let jsonData = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding), allowLossyConversion: false)
-        let json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as JSONArray
-        
-        if (error != nil) { return nil }
-        
-        return createCollection(json)
-    }
-    
-    required override init() {
-        super.init()
-    }
-    
-}
-
-// MARK: Formatter extenstions
-
-extension HarmonicModel {
-    
-    /**
+        /**
     Used mainly in the parse() function to format/tranform data
     
     :param: anyObject The object to transform
@@ -219,6 +148,77 @@ extension HarmonicModel {
     */
     func ToString(object: AnyObject) -> String? {
         return object as? String
+    }
+
+
+}
+
+class HarmonicModelMaker<T: HarmonicModel>: NSObject {
+    
+    /**
+    Createsa a model from a JSON string
+    
+    :param: json The JSONObject being parsed
+
+    :return: The HarmonicModel filled with glorious data
+    */
+    class func createModel(json : JSONObject) -> T {
+        return T.create(json)
+    }
+    
+    /**
+    Creates a model from a JSONObject
+    
+    :param: jsonString The string representation of the JSONObject being parsed
+    
+    :returns: The HarmonicModels filled with glorious data
+    */
+    class func createModel(jsonString : String, inout error : NSError?) -> T? {
+        if let jsonData: NSData? = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding)) {
+            let json = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as JSONObject
+            if (error != nil) { return nil }
+            
+            return createModel(json)
+        }
+
+        return nil
+    }
+    
+    /**
+    Creates a collection of models from a JSONArray
+    
+    :param: json The JSONArray being parsed
+    
+    :returns: The HarmonicModels filled with glorious data
+    */
+    class func createCollection(json : JSONArray) -> Array<T> {
+        var models : Array<T> = []
+        for (obj) in json {
+            models.append( T.create(obj) )
+        }
+        return models
+    }
+    
+    /**
+    Createsa a collection of models from a JSON string
+    
+    :param: jsonString The string representation of the JSONArray being parsed
+    
+    :returns: The HarmonicModels filled with glorious data
+    */
+    class func createCollection(jsonString : String, inout error : NSError?) -> Array<T>? {
+        if let jsonData: NSData? = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding)) {
+            let json = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as JSONArray
+            if (error != nil) { return nil }
+            
+            return createCollection(json)
+        }
+
+        return nil
+    }
+    
+    required override init() {
+        super.init()
     }
     
 }

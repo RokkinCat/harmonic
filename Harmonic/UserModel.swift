@@ -22,7 +22,7 @@ class UserModel: HarmonicModel {
         self.lastName = json["last_name"] >>> ToString
         self.bestFriend = json["best_friend"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
         self.friends = json["friends"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
-        self.birthday = json["birthday"] >>> ToBirthday
+        self.birthday = json["birthday"] >>> MyCustomFormatter.ToBirthday
     }
     
     class func get(parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {

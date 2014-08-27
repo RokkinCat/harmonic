@@ -21,7 +21,7 @@ class BrokenUserModel: HarmonicModel {
         self.lastName = json["elLastNameo"] >>> ToString
         self.bestFriend = json["best_frienddddd"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
         self.friends = json["friendssss"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
-        self.birthday = json["birfday"] >>> ToBirthday
+        self.birthday = json["birfday"] >>> MyCustomFormatter.ToBirthday
     }
     
 }

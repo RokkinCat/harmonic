@@ -7,15 +7,14 @@
 //
 
 import Foundation
+import Alamofire
 
 extension Alamofire.Request {
     
     class func HarmonicResponseSerializer(options: NSJSONReadingOptions = .AllowFragments) -> (NSURLRequest, NSHTTPURLResponse?, NSData?, NSError?) -> (AnyObject?, NSError?) {
         return { (request, response, data, error) in
             var serializationError: NSError?
-            let JSON: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: options, error: &serializationError)
-            
-            
+            let JSON: AnyObject! = NSJSONSerialization.JSONObjectWithData(data!, options: options, error: &serializationError)
             return (JSON, serializationError)
         }
     }
@@ -105,19 +104,3 @@ class HarmonicAlamofireAdapter: HarmonicNetworkAdapter {
     }
     
 }
-
-//
-//extension HarmonicModel {
-//    
-//    class API {
-//        
-//        class func routeUrl() -> String {
-//            fatalError("Need to override routeUrl()")
-//            return ""
-//        }
-//        
-//        
-//        
-//    }
-//    
-//}

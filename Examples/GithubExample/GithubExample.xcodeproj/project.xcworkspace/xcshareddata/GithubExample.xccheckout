@@ -5,27 +5,27 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>4F0927BF-D6EB-4953-95BD-042A0E5C15F5</string>
+	<string>26C85BD0-63BF-4207-83EE-6FFAE1B9BB0F</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Harmonic</string>
+	<string>GithubExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
 		<string>github.com:Alamofire/Alamofire.git</string>
 		<key>ADA55EB13F3BB0E6588A887A0420AA46C4470F45</key>
-		<string>ssh://github.com/joshdholtz/harmonic.git</string>
+		<string>github.com:joshdholtz/harmonic.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Harmonic.xcodeproj/project.xcworkspace</string>
+	<string>Examples/GithubExample/GithubExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
-		<string>../../Lib/Alamofire</string>
+		<string>../../../..Lib/Alamofire/</string>
 		<key>ADA55EB13F3BB0E6588A887A0420AA46C4470F45</key>
-		<string>../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/joshdholtz/harmonic.git</string>
+	<string>github.com:joshdholtz/harmonic.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

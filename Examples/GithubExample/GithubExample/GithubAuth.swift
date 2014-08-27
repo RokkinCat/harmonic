@@ -47,7 +47,7 @@ class GithubAuth: HarmonicModel {
     }
     
     func handleOpenURL(url: NSURL) -> Bool {
-        if (!url.absoluteString.hasPrefix("harmonicexample://githubcallback")) { return false }
+        if (url.absoluteString?.hasPrefix("harmonicexample://githubcallback") == false) { return false }
         
         NSNotificationCenter.defaultCenter()
         
@@ -71,13 +71,15 @@ class GithubAuth: HarmonicModel {
     }
     
     func getCodeFromURL(url: NSURL) -> String? {
-        var queryParams = url.absoluteString.stringByReplacingOccurrencesOfString("\(GithubAuth.Config.redirectURI!)?", withString: "")
+        var queryParams = url.absoluteString?.stringByReplacingOccurrencesOfString("\(GithubAuth.Config.redirectURI!)?", withString: "")
         
         // Iterates through query parameters and
-        for group in queryParams.componentsSeparatedByString("&") {
-            var pieces = group.componentsSeparatedByString("=")
-            if (pieces.count >= 2 && pieces[0] == "code") {
-                return pieces[1]
+        if (queryParams != nil) {
+            for group in queryParams!.componentsSeparatedByString("&") {
+                var pieces = group.componentsSeparatedByString("=")
+                if (pieces.count >= 2 && pieces[0] == "code") {
+                    return pieces[1]
+                }
             }
         }
         

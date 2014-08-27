@@ -15,7 +15,6 @@
 		036E779319A02DCD00B7D108 /* GithubExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E779219A02DCD00B7D108 /* GithubExampleTests.swift */; };
 		036E77A019A02DE500B7D108 /* HarmonicAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E779E19A02DE500B7D108 /* HarmonicAlamofire.swift */; };
 		036E77A119A02DE500B7D108 /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E779F19A02DE500B7D108 /* HarmonicModel.swift */; };
-		036E77A419A02DFE00B7D108 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E77A319A02DFE00B7D108 /* Alamofire.swift */; };
 		036E77A719A02E4900B7D108 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E77A619A02E4900B7D108 /* RepoModel.swift */; };
 		036E77A919A02F1400B7D108 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E77A819A02F1400B7D108 /* UserModel.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +26,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 036E777919A02DCD00B7D108;
 			remoteInfo = GithubExample;
+		};
+		03A4BB8C19AD8A45001E7C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03A4BB8719AD8A45001E7C87 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = Alamofire;
+		};
+		03A4BB8E19AD8A45001E7C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03A4BB8719AD8A45001E7C87 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = AlamofireTests;
+		};
+		03A4BB9019AD8A4F001E7C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03A4BB8719AD8A45001E7C87 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = Alamofire;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -43,9 +63,9 @@
 		036E779219A02DCD00B7D108 /* GithubExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubExampleTests.swift; sourceTree = "<group>"; };
 		036E779E19A02DE500B7D108 /* HarmonicAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicAlamofire.swift; sourceTree = "<group>"; };
 		036E779F19A02DE500B7D108 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
-		036E77A319A02DFE00B7D108 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		036E77A619A02E4900B7D108 /* RepoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
 		036E77A819A02F1400B7D108 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		03A4BB8719AD8A45001E7C87 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../../Lib/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,10 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				036E779C19A02DE500B7D108 /* HarmonicClasses */,
-				036E77A219A02DFE00B7D108 /* Lib */,
 				036E777C19A02DCD00B7D108 /* GithubExample */,
 				036E778F19A02DCD00B7D108 /* GithubExampleTests */,
 				036E777B19A02DCD00B7D108 /* Products */,
+				03A4BB8719AD8A45001E7C87 /* Alamofire.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,15 +162,6 @@
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
-		036E77A219A02DFE00B7D108 /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				036E77A319A02DFE00B7D108 /* Alamofire.swift */,
-			);
-			name = Lib;
-			path = ../../Lib;
-			sourceTree = "<group>";
-		};
 		036E77A519A02E2B00B7D108 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +170,15 @@
 				036E77A819A02F1400B7D108 /* UserModel.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		03A4BB8819AD8A45001E7C87 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03A4BB8D19AD8A45001E7C87 /* Alamofire.framework */,
+				03A4BB8F19AD8A45001E7C87 /* AlamofireTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +195,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				03A4BB9119AD8A4F001E7C87 /* PBXTargetDependency */,
 			);
 			name = GithubExample;
 			productName = GithubExample;
@@ -228,6 +249,12 @@
 			mainGroup = 036E777119A02DCD00B7D108;
 			productRefGroup = 036E777B19A02DCD00B7D108 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 03A4BB8819AD8A45001E7C87 /* Products */;
+					ProjectRef = 03A4BB8719AD8A45001E7C87 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				036E777919A02DCD00B7D108 /* GithubExample */,
@@ -235,6 +262,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		03A4BB8D19AD8A45001E7C87 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 03A4BB8C19AD8A45001E7C87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		03A4BB8F19AD8A45001E7C87 /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = 03A4BB8E19AD8A45001E7C87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		036E777819A02DCD00B7D108 /* Resources */ = {
@@ -263,7 +307,6 @@
 				034E6FAA19A13A890012B28F /* GithubAuth.swift in Sources */,
 				036E77A119A02DE500B7D108 /* HarmonicModel.swift in Sources */,
 				036E77A919A02F1400B7D108 /* UserModel.swift in Sources */,
-				036E77A419A02DFE00B7D108 /* Alamofire.swift in Sources */,
 				036E778219A02DCD00B7D108 /* ViewController.swift in Sources */,
 				036E77A019A02DE500B7D108 /* HarmonicAlamofire.swift in Sources */,
 				036E778019A02DCD00B7D108 /* AppDelegate.swift in Sources */,
@@ -286,6 +329,11 @@
 			isa = PBXTargetDependency;
 			target = 036E777919A02DCD00B7D108 /* GithubExample */;
 			targetProxy = 036E778D19A02DCD00B7D108 /* PBXContainerItemProxy */;
+		};
+		03A4BB9119AD8A4F001E7C87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			targetProxy = 03A4BB9019AD8A4F001E7C87 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

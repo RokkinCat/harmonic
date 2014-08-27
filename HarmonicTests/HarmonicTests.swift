@@ -106,9 +106,9 @@ class HarmonicTests: XCTestCase {
     
 }
 
-extension HarmonicModel {
+struct MyCustomFormatter {
     
-    func ToBirthday(object: AnyObject) -> NSDate? {
+    static func ToBirthday(object: AnyObject) -> NSDate? {
         
         var date: NSDate?
         
