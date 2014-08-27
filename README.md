@@ -27,7 +27,7 @@ Version | Changes
 ### Drop-in Classes
 Clone the repository and drop in the .swift files from the "Classes" directory into your project.
 
-## Example Usage
+## Example Model Usage
 
 ```swift
 var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz",
@@ -88,6 +88,37 @@ struct MyCustomFormatter {
         return date
     }
     
+}
+```
+
+## Example Network Adapter Usage
+
+### Loading collection of models via URL
+
+```swift
+HarmonicConfig.adapter = HarmonicAlamofireAdapter()  // This only needs to get done once (probably in AppDelegate)
+        
+// Gets collection of users
+UserModel.get("http://statuscodewhat.herokuapp.com/200?body=%5B%7B%22birthday%22%3A%221989-03-01%22%2C%22first_name%22%3A%22Josh%22%2C%22friends%22%3A%5B%7B%22first_name%22%3A%22Red%2520Ranger%22%7D%2C%7B%22first_name%22%3A%22Green%2520Ranger%22%7D%5D%2C%22last_name%22%3A%22Holtz%22%2C%22best_friend%22%3A%7B%22first_name%22%3A%22Bandit%22%2C%22last_name%22%3A%22The%2520Cat%22%7D%7D%5D") {(request, response, models, error) in
+    
+    var users = models as? [UserModel]
+    users?.each({
+        (user) -> () in
+        println("From Mock users.json API with model - \(user.firstName)")
+    })
+
+}
+```
+
+### Loading single model via URL
+
+```swift
+HarmonicConfig.adapter = HarmonicAlamofireAdapter() // This only needs to get done once (probably in AppDelegate)
+        
+// Gets user model
+var user = UserModel()
+user.get("http://statuscodewhat.herokuapp.com/200?body=%7B%22birthday%22%3A%221989-03-01%22%2C%22first_name%22%3A%22Josh%22%2C%22friends%22%3A%5B%7B%22first_name%22%3A%22Red%2520Ranger%22%7D%2C%7B%22first_name%22%3A%22Green%2520Ranger%22%7D%5D%2C%22last_name%22%3A%22Holtz%22%2C%22best_friend%22%3A%7B%22first_name%22%3A%22Bandit%22%2C%22last_name%22%3A%22The%2520Cat%22%7D%7D") {(request, response, model, error) in
+    println("From Mock user.json API with model - \(user.firstName)")
 }
 ```
 
