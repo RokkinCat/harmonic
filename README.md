@@ -27,6 +27,8 @@ Version | Changes
 ### Drop-in Classes
 Clone the repository and drop in the .swift files from the "Classes" directory into your project.
 
+If you are looking to use the Alamofire offerings, please look at [Alamofire doc](https://github.com/Alamofire/Alamofire) on how to install into your project
+
 ## Example Model Usage
 
 ```swift
