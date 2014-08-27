@@ -65,7 +65,7 @@ class UserModel: HarmonicModel {
         self.lastName = json["last_name"] >>> ToString
         self.bestFriend = json["best_friend"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
         self.friends = json["friends"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
-        self.birthday = json["birthday"] >>> ToBirthday
+        self.birthday = json["birthday"] >>> MyCustomFormatter.ToBirthday
     }
     
 }
@@ -74,9 +74,9 @@ class UserModel: HarmonicModel {
 ### Example Formatter using custom monad
 
 ```swift
-extension HarmonicModel {
+struct MyCustomFormatter {
     
-    func ToBirthday(object: AnyObject) -> NSDate? {
+    static func ToBirthday(object: AnyObject) -> NSDate? {
         
         var date: NSDate?
         
