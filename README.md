@@ -95,6 +95,10 @@ struct MyCustomFormatter {
 
 ### Loading collection of models via URL
 
+If you want to have the URL being created dynamically or wrap this not have to use this nasty URL everywhere, you can easily move this into its own method. See the folloing examples for that
+- [Wrapped function for code below](https://github.com/RokkinCat/harmonic/blob/master/Harmonic/UserModel.swift#L28)
+- [Real example using GitHub API](https://github.com/RokkinCat/harmonic/blob/master/Examples/GithubExample/GithubExample/UserModel.swift#L43)
+
 ```swift
 HarmonicConfig.adapter = HarmonicAlamofireAdapter()  // This only needs to get done once (probably in AppDelegate)
         
