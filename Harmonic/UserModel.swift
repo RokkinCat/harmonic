@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserModel: HarmonicModel {
+class UserModel: HarmonicRestModel, HarmonicModel {
     
     var firstName: String?
     var lastName: String?
@@ -16,13 +16,17 @@ class UserModel: HarmonicModel {
     var friends: Array<UserModel>?
     var birthday: NSDate?
 
-    override func parse(json : JSONObject) {
-        super.parse(json)
-        self.firstName = json["first_name"] >>> ToString
-        self.lastName = json["last_name"] >>> ToString
-        self.bestFriend = json["best_friend"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
-        self.friends = json["friends"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
-        self.birthday = json["birthday"] >>> MyCustomFormatter.ToBirthday
+    required init() {
+        super.init()
+    }
+    
+    override  func parse(json : JSONObject) {
+        // FIXME: Do stuff
+//        self.firstName = json["first_name"] >>> ToString
+//        self.lastName = json["last_name"] >>> ToString
+//        self.bestFriend = json["best_friend"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
+//        self.friends = json["friends"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
+//        self.birthday = json["birthday"] >>> MyCustomFormatter.ToBirthday
     }
     
     class func get(parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {

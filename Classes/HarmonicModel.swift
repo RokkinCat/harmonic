@@ -29,130 +29,160 @@ struct HarmonicConfig {
     
 }
 
-class HarmonicModel: NSObject {
-    
-    // Holds the JSON used to parse incase lazy variables are used
-    var _json = JSONObject()
-    
-    /**
-    Creates a model with a JSONObject
-    
-    :param: json The JSONObject being parsed
-    
-    :returns: The HarmonicModel filled with glorious data
-    */
-    class func create(json : JSONObject) -> Self {
-        var model = self()
-        model.parse(json);
-        return model
-    }
-
-    required override init() {
-        super.init()
-    }
-    
-    /**
-    This is the method that gets overwritten for each subclasses HarmonicModel
-
-    :param: json The JSONObject being parsed
-    */
-    func parse(json : JSONObject) {
-        _json = json
-    }
-    
-    // MARK: Formatters
-
-        /**
-    Used mainly in the parse() function to format/tranform data
-    
-    :param: anyObject The object to transform
-    
-    :returns: A JSONObject? or nil
-    */
-    class func ToJSONObject(object: AnyObject) -> JSONObject? {
-        return object as? JSONObject
-    }
-    
-    /**
-    Used mainly in the parse() function to format/tranform data
-    
-    :param: anyObject The object to transform
-    
-    :returns: A JSONArray? or nil
-    */
-    class func ToJSONArray(object: AnyObject) -> JSONArray? {
-        return object as? JSONArray
-    }
-    
-    /**
-    Used mainly in the parse() function to format/tranform data
-    
-    :param: anyObject The object to transform
-    
-    :returns: A JSONObject or nil
-    */
-    func ToJSONObject(object: AnyObject) -> JSONObject? {
-        return HarmonicModel.ToJSONObject(object)
-    }
-    
-    /**
-    Used mainly in the parse() function to format/tranform data
-    
-    :param: anyObject The object to transform
-    
-    :returns: A JSONArray? or nil
-    */
-    func ToJSONArray(object: AnyObject) -> JSONArray? {
-        return HarmonicModel.ToJSONArray(object)
-    }
-    
-    /**
-    Used mainly in the parse() function to format/tranform data
-    
-    :param: anyObject The object to transform
-    
-    :returns: A Bool? or nil
-    */
-    func ToFloat(object: AnyObject) -> Bool? {
-        return object as? Bool
-    }
-    
-    /**
-    Used mainly in the parse() function to format/tranform data
-    
-    :param: anyObject The object to transform
-    
-    :returns: A Float? or nil
-    */
-    func ToFloat(object: AnyObject) -> Float? {
-        return object as? Float
-    }
-    
-    /**
-    Used mainly in the parse() function to format/tranform data
-    
-    :param: anyObject The object to transform
-    
-    :returns: A Int? or nil
-    */
-    func ToInt(object: AnyObject) -> Int? {
-        return object as? Int
-    }
-    
-    /**
-    Used mainly in the parse() function to format/tranform data
-    
-    :param: anyObject The object to transform
-    
-    :returns: A String? or nil
-    */
-    func ToString(object: AnyObject) -> String? {
-        return object as? String
-    }
-
-
+protocol HarmonicModel {
+    init()
+    func parse(json : JSONObject)
 }
 
+class Maker<T:Base> {
+    class func make() -> T {
+        return T()
+    }
+}
+
+protocol Base {
+    init()
+    func talk()
+}
+
+class A: Base {
+    required init() {}
+    func talk() {
+        println("Aaaaaa")
+    }
+}
+
+class B: Base {
+    required init() {}
+    func talk() {
+        println("Bbbbbb")
+    }
+}
+
+//class HarmonicModel: NSObject {
+//    
+//    // Holds the JSON used to parse incase lazy variables are used
+//    var _json = JSONObject()
+//    
+//    /**
+//    Creates a model with a JSONObject
+//    
+//    :param: json The JSONObject being parsed
+//    
+//    :returns: The HarmonicModel filled with glorious data
+//    */
+//    class func create(json : JSONObject) -> Self {
+//        var model = self()
+//        model.parse(json);
+//        return model
+//    }
+//
+//    required override init() {
+//        super.init()
+//    }
+//    
+//    /**
+//    This is the method that gets overwritten for each subclasses HarmonicModel
+//
+//    :param: json The JSONObject being parsed
+//    */
+//    func parse(json : JSONObject) {
+//        _json = json
+//    }
+//    
+//    // MARK: Formatters
+//
+//        /**
+//    Used mainly in the parse() function to format/tranform data
+//    
+//    :param: anyObject The object to transform
+//    
+//    :returns: A JSONObject? or nil
+//    */
+//    class func ToJSONObject(object: AnyObject) -> JSONObject? {
+//        return object as? JSONObject
+//    }
+//    
+//    /**
+//    Used mainly in the parse() function to format/tranform data
+//    
+//    :param: anyObject The object to transform
+//    
+//    :returns: A JSONArray? or nil
+//    */
+//    class func ToJSONArray(object: AnyObject) -> JSONArray? {
+//        return object as? JSONArray
+//    }
+//    
+//    /**
+//    Used mainly in the parse() function to format/tranform data
+//    
+//    :param: anyObject The object to transform
+//    
+//    :returns: A JSONObject or nil
+//    */
+//    func ToJSONObject(object: AnyObject) -> JSONObject? {
+//        return HarmonicModel.ToJSONObject(object)
+//    }
+//    
+//    /**
+//    Used mainly in the parse() function to format/tranform data
+//    
+//    :param: anyObject The object to transform
+//    
+//    :returns: A JSONArray? or nil
+//    */
+//    func ToJSONArray(object: AnyObject) -> JSONArray? {
+//        return HarmonicModel.ToJSONArray(object)
+//    }
+//    
+//    /**
+//    Used mainly in the parse() function to format/tranform data
+//    
+//    :param: anyObject The object to transform
+//    
+//    :returns: A Bool? or nil
+//    */
+//    func ToFloat(object: AnyObject) -> Bool? {
+//        return object as? Bool
+//    }
+//    
+//    /**
+//    Used mainly in the parse() function to format/tranform data
+//    
+//    :param: anyObject The object to transform
+//    
+//    :returns: A Float? or nil
+//    */
+//    func ToFloat(object: AnyObject) -> Float? {
+//        return object as? Float
+//    }
+//    
+//    /**
+//    Used mainly in the parse() function to format/tranform data
+//    
+//    :param: anyObject The object to transform
+//    
+//    :returns: A Int? or nil
+//    */
+//    func ToInt(object: AnyObject) -> Int? {
+//        return object as? Int
+//    }
+//    
+//    /**
+//    Used mainly in the parse() function to format/tranform data
+//    
+//    :param: anyObject The object to transform
+//    
+//    :returns: A String? or nil
+//    */
+//    func ToString(object: AnyObject) -> String? {
+//        return object as? String
+//    }
+//
+//
+//}
+//
 class HarmonicModelMaker<T: HarmonicModel>: NSObject {
     
     /**
@@ -163,7 +193,10 @@ class HarmonicModelMaker<T: HarmonicModel>: NSObject {
     :return: The HarmonicModel filled with glorious data
     */
     class func createModel(json : JSONObject) -> T {
-        return T.create(json)
+        var model = T()
+        println("model = \(model)")
+        model.parse(json)
+        return model
     }
     
     /**
@@ -194,7 +227,7 @@ class HarmonicModelMaker<T: HarmonicModel>: NSObject {
     class func createCollection(json : JSONArray) -> Array<T> {
         var models : Array<T> = []
         for (obj) in json {
-            models.append( T.create(obj) )
+            models.append( HarmonicModelMaker<T>.createModel(obj) )
         }
         return models
     }
@@ -250,7 +283,18 @@ protocol HarmonicNetworkAdapter {
     
 }
 
-extension HarmonicModel {
+class HarmonicRestModel: HarmonicModel {
+    
+    required init() {
+        
+    }
+    
+    func parse(json: JSONObject) {
+        
+    }
+}
+
+extension HarmonicRestModel {
     
     /**
     Performs a NSURLRequest. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
@@ -363,7 +407,7 @@ extension HarmonicModel {
     
 }
 
-extension HarmonicModel {
+extension HarmonicRestModel {
     
     /**
     Performs a NSURLRequest. The callback passes in an instance of the HarmonicModel subclass that this was called on. The model instance will need to be casted down in order to use properly.

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BrokenUserModel: HarmonicModel {
+class BrokenUserModel: HarmonicRestModel, HarmonicModel {
     
     var firstName : String?;
     var lastName : String?;
@@ -16,12 +16,17 @@ class BrokenUserModel: HarmonicModel {
     var friends : Array<UserModel>?;
     var birthday : NSDate?;
     
+    required init() {
+        super.init()
+    }
+    
     override func parse(json : JSONObject) {
-        self.firstName = json["first_name"] >>> ToString
-        self.lastName = json["elLastNameo"] >>> ToString
-        self.bestFriend = json["best_frienddddd"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
-        self.friends = json["friendssss"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
-        self.birthday = json["birfday"] >>> MyCustomFormatter.ToBirthday
+        // FIXME: Do stuff
+//        self.firstName = json["first_name"] >>> ToString
+//        self.lastName = json["elLastNameo"] >>> ToString
+//        self.bestFriend = json["best_frienddddd"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
+//        self.friends = json["friendssss"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
+//        self.birthday = json["birfday"] >>> MyCustomFormatter.ToBirthday
     }
     
 }

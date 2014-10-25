@@ -22,16 +22,18 @@ extension Alamofire.Request {
     func responseHarmonic<T: HarmonicModel>(modelMaker: HarmonicModelMaker<T>.Type, completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
         
         return responseJSON({ (request, response, JSON, error) in
-            let model = JSON >>> HarmonicModel.ToJSONObject >>> modelMaker.createModel
-            completionHandler(request, response, model, error)
+            // FIXME: Make model
+//            let model = JSON >>> HarmonicModel.ToJSONObject >>> modelMaker.createModel
+//            completionHandler(request, response, model, error)
         })
     }
     
     func responseHarmonics<T: HarmonicModel>(modelMaker: HarmonicModelMaker<T>.Type, completionHandler: (NSURLRequest, NSHTTPURLResponse?, Array<T>?, NSError?) -> Void) -> Self {
         
         return responseJSON({ (request, response, JSON, error) in
-            let models  = JSON >>> HarmonicModel.ToJSONArray >>> modelMaker.createCollection
-            completionHandler(request, response, models, error)
+            // FIXME: Make model
+//            let models  = JSON >>> HarmonicModel.ToJSONArray >>> modelMaker.createCollection
+//            completionHandler(request, response, models, error)
         })
         
     }
