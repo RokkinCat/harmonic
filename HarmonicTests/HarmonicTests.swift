@@ -28,7 +28,7 @@ class HarmonicTests: XCTestCase {
     }
     
     func testUserModel() {
-        var user : UserModel = UserModel.create(jsonUser1)
+        var user : UserModel = HarmonicModelMaker<UserModel>.createModel(jsonUser1)
         
         self.commonUserTest(user)
     }
@@ -53,7 +53,7 @@ class HarmonicTests: XCTestCase {
         var error: NSError?
         var users = HarmonicModelMaker<UserModel>.createCollection("[{\"birthday\":\"1989-03-01\",\"first_name\":\"Josh\",\"friends\":[{\"first_name\":\"Red Ranger\"},{\"first_name\":\"Green Ranger\"}],\"last_name\":\"Holtz\",\"best_friend\":{\"first_name\":\"Bandit\",\"last_name\":\"The Cat\"}}]", error: &error)
         
-        XCTAssertNotNil(users, "Users should not be nil")
+        XCTAssertTrue(users != nil, "Users should not be nil")
         XCTAssertEqual(users!.count, 1, "Users count should be 1")
 
         let user = users![0] as UserModel
@@ -67,7 +67,7 @@ class HarmonicTests: XCTestCase {
         //  - has bestFriend mapped incorrectly
         //  - has friends mapped incorrectly
         //  - has format function on birthday incorrectly
-        var user : BrokenUserModel = BrokenUserModel.create(jsonUser1);
+        var user : BrokenUserModel = HarmonicModelMaker<BrokenUserModel>.createModel(jsonUser1)
         
         // The good
         XCTAssertEqual(jsonUser1["first_name"]! as String, user.firstName!, "First names should equal");

@@ -21,12 +21,11 @@ class BrokenUserModel: HarmonicRestModel, HarmonicModel {
     }
     
     override func parse(json : JSONObject) {
-        // FIXME: Do stuff
-//        self.firstName = json["first_name"] >>> ToString
-//        self.lastName = json["elLastNameo"] >>> ToString
-//        self.bestFriend = json["best_frienddddd"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
-//        self.friends = json["friendssss"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
-//        self.birthday = json["birfday"] >>> MyCustomFormatter.ToBirthday
+        self.firstName <*> json["first_name"]
+        self.lastName <*> json["elLastNameo"]
+        self.bestFriend <*> json["best_frienddddd"]
+        self.friends <*> json["friendssss"]
+        self.birthday <*> json["birfday"] >>> MyCustomFormatter.ToBirthday
     }
     
 }

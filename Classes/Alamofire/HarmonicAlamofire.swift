@@ -19,23 +19,29 @@ extension Alamofire.Request {
         }
     }
     
-    func responseHarmonic<T: HarmonicModel>(modelMaker: HarmonicModelMaker<T>.Type, completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
+    func responseHarmonic<T: HarmonicModel>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
         
         return responseJSON({ (request, response, JSON, error) in
-            // FIXME: Make model
-//            let model = JSON >>> HarmonicModel.ToJSONObject >>> modelMaker.createModel
-//            completionHandler(request, response, model, error)
+            let model = JSON >>> self.toJSONObject >>> HarmonicModelMaker<T>().createModel
+            completionHandler(request, response, model, error)
         })
     }
     
-    func responseHarmonics<T: HarmonicModel>(modelMaker: HarmonicModelMaker<T>.Type, completionHandler: (NSURLRequest, NSHTTPURLResponse?, Array<T>?, NSError?) -> Void) -> Self {
+    func responseHarmonics<T: HarmonicModel>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, Array<T>?, NSError?) -> Void) -> Self {
         
         return responseJSON({ (request, response, JSON, error) in
-            // FIXME: Make model
-//            let models  = JSON >>> HarmonicModel.ToJSONArray >>> modelMaker.createCollection
-//            completionHandler(request, response, models, error)
+            let models  = JSON >>> self.toJSONArray >>> HarmonicModelMaker<T>().createCollection
+            completionHandler(request, response, models, error)
         })
         
+    }
+    
+    func toJSONObject(object: AnyObject?) -> JSONObject? {
+        return object as? JSONObject
+    }
+    
+    func toJSONArray(object: AnyObject?) -> JSONArray? {
+        return object as? JSONArray
     }
     
 }

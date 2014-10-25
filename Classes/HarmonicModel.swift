@@ -27,13 +27,13 @@ infix operator <*> { associativity left precedence 160 }
 
 func <*><A: HarmonicModel, B>(inout a: Array<A>?, b: B?) {
     if let c = b as? JSONArray {
-        a = HarmonicModelMaker<A>.createCollection(c)
+        a = HarmonicModelMaker<A>().createCollection(c)
     }
 }
 
 func <*><A: HarmonicModel, B>(inout a: A?, b: B?) {
     if let c = b as? JSONObject {
-        a = HarmonicModelMaker<A>.createModel(c)
+        a = HarmonicModelMaker<A>().createModel(c)
     }
 }
 
@@ -147,7 +147,7 @@ protocol HarmonicModel {
 //
 //}
 
-class HarmonicModelMaker<T: HarmonicModel>: NSObject {
+class HarmonicModelMaker<T: HarmonicModel> {
     
     /**
     Createsa a model from a JSON string
@@ -156,7 +156,7 @@ class HarmonicModelMaker<T: HarmonicModel>: NSObject {
 
     :return: The HarmonicModel filled with glorious data
     */
-    class func createModel(json : JSONObject) -> T {
+    func createModel(json : JSONObject) -> T {
         var model = T()
         model.parse(json)
         return model
@@ -169,7 +169,7 @@ class HarmonicModelMaker<T: HarmonicModel>: NSObject {
     
     :returns: The HarmonicModels filled with glorious data
     */
-    class func createModel(jsonString : String, inout error : NSError?) -> T? {
+    func createModel(jsonString : String, inout error : NSError?) -> T? {
         if let jsonData: NSData? = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding)) {
             let json = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as JSONObject
             if (error != nil) { return nil }
@@ -187,10 +187,10 @@ class HarmonicModelMaker<T: HarmonicModel>: NSObject {
     
     :returns: The HarmonicModels filled with glorious data
     */
-    class func createCollection(json : JSONArray) -> Array<T> {
+    func createCollection(json : JSONArray) -> Array<T> {
         var models : Array<T> = []
         for (obj) in json {
-            models.append( HarmonicModelMaker<T>.createModel(obj) )
+            models.append( createModel(obj) )
         }
         return models
     }
@@ -202,7 +202,7 @@ class HarmonicModelMaker<T: HarmonicModel>: NSObject {
     
     :returns: The HarmonicModels filled with glorious data
     */
-    class func createCollection(jsonString : String, inout error : NSError?) -> Array<T>? {
+    func createCollection(jsonString : String, inout error : NSError?) -> Array<T>? {
         if let jsonData: NSData? = jsonString.dataUsingEncoding(UInt(NSUTF8StringEncoding)) {
             let json = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as JSONArray
             if (error != nil) { return nil }
@@ -211,10 +211,6 @@ class HarmonicModelMaker<T: HarmonicModel>: NSObject {
         }
 
         return nil
-    }
-    
-    required override init() {
-        super.init()
     }
     
 }
@@ -267,14 +263,14 @@ extension HarmonicRestModel {
     :param: request The NSURLRequest to perform
     :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
     */
-    class func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {
+    class func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
         
-        var c = {(json: JSONObject) -> HarmonicModel in
+        var c = {(json: JSONObject) -> HarmonicRestModel in
             var model = self(); model.parse(json); return model
         };
         
         HarmonicConfig.adapter?.request(request) {(request, response, JSON, error) in
-            var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+            var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
             callback(request: request, response: response, models: models, error: error)
         }
         
@@ -289,14 +285,14 @@ extension HarmonicRestModel {
     :param: parameters The parameters to send on the request
     :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
     */
-    class func get(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {
+    class func get(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
         
-        var c = {(json: JSONObject) -> HarmonicModel in
+        var c = {(json: JSONObject) -> HarmonicRestModel in
             var model = self(); model.parse(json); return model
         };
         
         HarmonicConfig.adapter?.get(url, parameters: parameters) {(request, response, JSON, error) in
-            var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+            var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
             callback(request: request, response: response, models: models, error: error)
         }
         
@@ -311,14 +307,14 @@ extension HarmonicRestModel {
     :param: parameters The parameters to send on the request
     :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
     */
-    class func post(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {
+    class func post(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
         
-        var c = {(json: JSONObject) -> HarmonicModel in
+        var c = {(json: JSONObject) -> HarmonicRestModel in
             var model = self(); model.parse(json); return model
         };
         
         HarmonicConfig.adapter?.post(url, parameters: parameters) {(request, response, JSON, error) in
-            var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+            var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
             callback(request: request, response: response, models: models, error: error)
         }
         
@@ -333,14 +329,14 @@ extension HarmonicRestModel {
     :param: parameters The parameters to send on the request
     :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
     */
-    class func put(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {
+    class func put(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
         
-        var c = {(json: JSONObject) -> HarmonicModel in
+        var c = {(json: JSONObject) -> HarmonicRestModel in
             var model = self(); model.parse(json); return model
         };
         
         HarmonicConfig.adapter?.put(url, parameters: parameters) {(request, response, JSON, error) in
-            var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+            var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
             callback(request: request, response: response, models: models, error: error)
         }
         
@@ -355,14 +351,14 @@ extension HarmonicRestModel {
     :param: parameters The parameters to send on the request
     :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
     */
-    class func delete(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicModel]?, error: NSError?) -> Void) {
+    class func delete(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
         
-        var c = {(json: JSONObject) -> HarmonicModel in
+        var c = {(json: JSONObject) -> HarmonicRestModel in
             var model = self(); model.parse(json); return model
         };
         
         HarmonicConfig.adapter?.delete(url, parameters: parameters) {(request, response, JSON, error) in
-            var models: [HarmonicModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+            var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
             callback(request: request, response: response, models: models, error: error)
         }
         
@@ -380,7 +376,7 @@ extension HarmonicRestModel {
     :param: request The NSURLRequest to perform
     :param: callback instance of the HarmonicModel subclass that this was called on.
     */
-    func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicModel?, error: NSError?) -> Void) {
+    func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
         
         var model = self
         HarmonicConfig.adapter?.request(request) {(request, response, JSON, error) in
@@ -399,7 +395,7 @@ extension HarmonicRestModel {
     :param: parameters The parameters to send on the request
     :param: callback instance of the HarmonicModel subclass that this was called on.
     */
-    func get(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicModel?, error: NSError?) -> Void) {
+    func get(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
         
         var model = self
         HarmonicConfig.adapter?.get(url, parameters: parameters) {(request, response, JSON, error) in
@@ -418,7 +414,7 @@ extension HarmonicRestModel {
     :param: parameters The parameters to send on the request
     :param: callback instance of the HarmonicModel subclass that this was called on.
     */
-    func post(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicModel?, error: NSError?) -> Void) {
+    func post(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
         
         var model = self
         HarmonicConfig.adapter?.post(url, parameters: parameters) {(request, response, JSON, error) in
@@ -437,7 +433,7 @@ extension HarmonicRestModel {
     :param: parameters The parameters to send on the request
     :param: callback instance of the HarmonicModel subclass that this was called on.
     */
-    func put(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicModel?, error: NSError?) -> Void) {
+    func put(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
         
         var model = self
         HarmonicConfig.adapter?.put(url, parameters: parameters) {(request, response, JSON, error) in
@@ -456,7 +452,7 @@ extension HarmonicRestModel {
     :param: parameters The parameters to send on the request
     :param: callback instance of the HarmonicModel subclass that this was called on.
     */
-    func delete(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicModel?, error: NSError?) -> Void) {
+    func delete(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
         
         var model = self
         HarmonicConfig.adapter?.delete(url, parameters: parameters) {(request, response, JSON, error) in
