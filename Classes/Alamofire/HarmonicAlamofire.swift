@@ -47,6 +47,7 @@ class HarmonicAlamofireAdapter: HarmonicNetworkAdapter {
     
     convenience init() {
         self.init(manager: Alamofire.Manager.sharedInstance)
+        
     }
     
     init(manager: Alamofire.Manager, encoding: Alamofire.ParameterEncoding = Alamofire.ParameterEncoding.URL) {
@@ -55,8 +56,8 @@ class HarmonicAlamofireAdapter: HarmonicNetworkAdapter {
     }
     
     func URLRequest(method: Alamofire.Method, _ URL: String) -> NSURLRequest {
-        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URL))
-        mutableURLRequest.HTTPMethod = method.toRaw()
+        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URL)!)
+        mutableURLRequest.HTTPMethod = method.rawValue
         
         return mutableURLRequest
     }

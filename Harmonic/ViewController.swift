@@ -35,26 +35,25 @@ class ViewController: UIViewController {
         
         // Single model
         var user = HarmonicModelMaker<UserModel>.createModel(json)
-//        var user = UserModel();
-        println("User - \(user.firstName)")
-//        println("User - \(user.firstName) \(user.lastName) \(user.birthday)")
-//        println("\tBest Friend - \(user.bestFriend?.firstName) \(user.bestFriend?.lastName)")
-//        user.friends?.each( {
-//            (friend) -> Void in
-//            println("\tFriend - \(friend.firstName)")
-//        })
-//        
-//        // Collection of model
-//        var users = HarmonicModelMaker<UserModel>.createCollection(jsons)
-//        var userInUsers = users[0]
-//        println("User in Users - \(userInUsers.firstName) \(userInUsers.lastName) \(userInUsers.birthday)")
-//        println("\tBest Friend - \(userInUsers.bestFriend?.firstName) \(userInUsers.bestFriend?.lastName)")
-//        user.friends?.each( {
-//            (friend) -> Void in
-//            println("\tFriend - \(friend.firstName)")
-//        })
-//        
-//        println("\n\n")
+        
+        println("User - \(user.firstName) \(user.lastName) \(user.birthday)")
+        println("\tBest Friend - \(user.bestFriend?.firstName) \(user.bestFriend?.lastName)")
+        user.friends?.each( {
+            (friend) -> Void in
+            println("\tFriend - \(friend.firstName)")
+        })
+        
+        // Collection of model
+        var users = HarmonicModelMaker<UserModel>.createCollection(jsons)
+        var userInUsers = users[0]
+        println("User in Users - \(userInUsers.firstName) \(userInUsers.lastName) \(userInUsers.birthday)")
+        println("\tBest Friend - \(userInUsers.bestFriend?.firstName) \(userInUsers.bestFriend?.lastName)")
+        user.friends?.each( {
+            (friend) -> Void in
+            println("\tFriend - \(friend.firstName)")
+        })
+        
+        println("\n\n")
     }
     
     func justNetworkStuff() {

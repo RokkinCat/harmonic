@@ -13,7 +13,7 @@ typealias JSONObject = Dictionary<String, AnyObject>
 typealias JSONArray = Array<JSONObject>
 
 // Used for monad for awesomely easy parsing
-infix operator >>> { associativity left precedence 160 }
+infix operator >>> { associativity left precedence 170 }
 
 func >>><A, B>(a: A?, f: A -> B?) -> B? {
     if let x = a {
@@ -21,6 +21,24 @@ func >>><A, B>(a: A?, f: A -> B?) -> B? {
     } else {
         return .None
     }
+}
+
+infix operator <*> { associativity left precedence 160 }
+
+func <*><A: HarmonicModel, B>(inout a: Array<A>?, b: B?) {
+    if let c = b as? JSONArray {
+        a = HarmonicModelMaker<A>.createCollection(c)
+    }
+}
+
+func <*><A: HarmonicModel, B>(inout a: A?, b: B?) {
+    if let c = b as? JSONObject {
+        a = HarmonicModelMaker<A>.createModel(c)
+    }
+}
+
+func <*><A, B>(inout a: A?, b: B?) {
+    a = b as? A
 }
 
 struct HarmonicConfig {
@@ -34,61 +52,7 @@ protocol HarmonicModel {
     func parse(json : JSONObject)
 }
 
-class Maker<T:Base> {
-    class func make() -> T {
-        return T()
-    }
-}
-
-protocol Base {
-    init()
-    func talk()
-}
-
-class A: Base {
-    required init() {}
-    func talk() {
-        println("Aaaaaa")
-    }
-}
-
-class B: Base {
-    required init() {}
-    func talk() {
-        println("Bbbbbb")
-    }
-}
-
 //class HarmonicModel: NSObject {
-//    
-//    // Holds the JSON used to parse incase lazy variables are used
-//    var _json = JSONObject()
-//    
-//    /**
-//    Creates a model with a JSONObject
-//    
-//    :param: json The JSONObject being parsed
-//    
-//    :returns: The HarmonicModel filled with glorious data
-//    */
-//    class func create(json : JSONObject) -> Self {
-//        var model = self()
-//        model.parse(json);
-//        return model
-//    }
-//
-//    required override init() {
-//        super.init()
-//    }
-//    
-//    /**
-//    This is the method that gets overwritten for each subclasses HarmonicModel
-//
-//    :param: json The JSONObject being parsed
-//    */
-//    func parse(json : JSONObject) {
-//        _json = json
-//    }
 //    
 //    // MARK: Formatters
 //
@@ -182,7 +146,7 @@ class B: Base {
 //
 //
 //}
-//
+
 class HarmonicModelMaker<T: HarmonicModel>: NSObject {
     
     /**
@@ -194,7 +158,6 @@ class HarmonicModelMaker<T: HarmonicModel>: NSObject {
     */
     class func createModel(json : JSONObject) -> T {
         var model = T()
-        println("model = \(model)")
         model.parse(json)
         return model
     }
