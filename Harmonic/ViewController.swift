@@ -18,8 +18,8 @@ class ViewController: UIViewController {
     }
     
     func justDoStuff() {
-        self.justModelStuff()
-        self.justNetworkStuff()
+//        self.justModelStuff()
+//        self.justNetworkStuff()
         self.justModelNetworkStuff()
     }
     
@@ -82,22 +82,22 @@ class ViewController: UIViewController {
     
     func justModelNetworkStuff() {
         HarmonicConfig.adapter = HarmonicAlamofireAdapter()
-        
-        // Gets collection of users
-        UserModel.get {(request, response, models, error) in
-            
-            if let users = models as? [UserModel] {
-                users.each({
-                    (user) -> () in
-                    println("From Mock users.json API with model - \(user.firstName)")
-                })
-            }
 
-        }
+//        // Gets collection of users
+//        UserModel.get {(request, response, models, error) in
+//            
+//            if let users = models as? [UserModel] {
+//                users.each({
+//                    (user) -> () in
+//                    println("From Mock users.json API with model - \(user.firstName)")
+//                })
+//            }
+//
+//        }
         
         // Gets user model
         var user = UserModel()
-        user.get {(request, response, model, error) in
+        user.get(parameters: nil) {(request, response, model: HarmonicModel?, error) in
             println("From Mock user.json API with model - \(user.firstName)")
         }
     }
