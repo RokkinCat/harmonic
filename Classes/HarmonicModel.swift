@@ -334,11 +334,29 @@ extension HarmonicRestModel {
 
         func doWork() -> Self {
 
-            
             if (modelCallback != nil) {
                 switch self.method {
                 case .GET:
-                    get(url, parameters: parameters, callback: modelCallback!)
+                    getModel(url, parameters: parameters, callback: modelCallback!)
+                case .POST:
+                    postModel(url, parameters: parameters, callback: modelCallback!)
+                case .PUT:
+                    putModel(url, parameters: parameters, callback: modelCallback!)
+                case .DELETE:
+                    deleteModel(url, parameters: parameters, callback: modelCallback!)
+                default:
+                    println("Oops")
+                }
+            } else if (modelsCallback != nil) {
+                switch self.method {
+                case .GET:
+                    getList(url, parameters: parameters, callback: modelsCallback!)
+                case .POST:
+                    postList(url, parameters: parameters, callback: modelsCallback!)
+                case .PUT:
+                    putList(url, parameters: parameters, callback: modelsCallback!)
+                case .DELETE:
+                    deleteList(url, parameters: parameters, callback: modelsCallback!)
                 default:
                     println("Oops")
                 }
@@ -347,114 +365,114 @@ extension HarmonicRestModel {
             return self
         }
         
-//        /**
-//        Performs a NSURLRequest. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
-//        
-//        Ex: var users = models as? [UserModel]
-//        
-//        :param: request The NSURLRequest to perform
-//        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
-//        */
-//        class func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
-//            
-//            var c = {(json: JSONObject) -> HarmonicRestModel in
-//                var model = create(); model.parse(json); return model
-//            };
-//            
-//            HarmonicConfig.adapter?.request(request) {(request, response, JSON, error) in
-//                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
-//                callback(request: request, response: response, models: models, error: error)
-//            }
-//            
-//        }
-//        
-//        /**
-//        Performs a GET request. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
-//        
-//        Ex: var users = models as? [UserModel]
-//        
-//        :param: url The URL to perform a GET request on
-//        :param: parameters The parameters to send on the request
-//        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
-//        */
-//        class func get(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
-//            
-//            var c = {(json: JSONObject) -> HarmonicRestModel in
-//                var model = create(); model.parse(json); return model
-//            };
-//            
-//            HarmonicConfig.adapter?.get(url, parameters: parameters) {(request, response, JSON, error) in
-//                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
-//                callback(request: request, response: response, models: models, error: error)
-//            }
-//            
-//        }
-//        
-//        /**
-//        Performs a POST request. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
-//        
-//        Ex: var users = models as? [UserModel]
-//        
-//        :param: url The URL to perform a POST request on
-//        :param: parameters The parameters to send on the request
-//        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
-//        */
-//        class func post(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
-//            
-//            var c = {(json: JSONObject) -> HarmonicRestModel in
-//                var model = create(); model.parse(json); return model
-//            };
-//            
-//            HarmonicConfig.adapter?.post(url, parameters: parameters) {(request, response, JSON, error) in
-//                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
-//                callback(request: request, response: response, models: models, error: error)
-//            }
-//            
-//        }
-//        
-//        /**
-//        Performs a PUT request. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
-//        
-//        Ex: var users = models as? [UserModel]
-//        
-//        :param: url The URL to perform a PUT request on
-//        :param: parameters The parameters to send on the request
-//        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
-//        */
-//        class func put(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
-//            
-//            var c = {(json: JSONObject) -> HarmonicRestModel in
-//                var model = create(); model.parse(json); return model
-//            };
-//            
-//            HarmonicConfig.adapter?.put(url, parameters: parameters) {(request, response, JSON, error) in
-//                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
-//                callback(request: request, response: response, models: models, error: error)
-//            }
-//            
-//        }
-//        
-//        /**
-//        Performs a DELETE request. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
-//        
-//        Ex: var users = models as? [UserModel]
-//        
-//        :param: url The URL to perform a DELETE request on
-//        :param: parameters The parameters to send on the request
-//        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
-//        */
-//        class func delete(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
-//            
-//            var c = {(json: JSONObject) -> HarmonicRestModel in
-//                var model = create(); model.parse(json); return model
-//            };
-//            
-//            HarmonicConfig.adapter?.delete(url, parameters: parameters) {(request, response, JSON, error) in
-//                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
-//                callback(request: request, response: response, models: models, error: error)
-//            }
-//            
-//        }
+        /**
+        Performs a NSURLRequest. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
+        
+        Ex: var users = models as? [UserModel]
+        
+        :param: request The NSURLRequest to perform
+        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
+        */
+        func requestList(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
+            
+            var c = {(json: JSONObject) -> HarmonicRestModel in
+                var model = self.creator(); model.parse(json); return model
+            };
+            
+            HarmonicConfig.adapter?.request(request) {(request, response, JSON, error) in
+                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+                callback(request: request, response: response, models: models, error: error)
+            }
+            
+        }
+        
+        /**
+        Performs a GET request. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
+        
+        Ex: var users = models as? [UserModel]
+        
+        :param: url The URL to perform a GET request on
+        :param: parameters The parameters to send on the request
+        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
+        */
+        func getList(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
+            
+            var c = {(json: JSONObject) -> HarmonicRestModel in
+                var model = self.creator(); model.parse(json); return model
+            };
+            
+            HarmonicConfig.adapter?.get(url, parameters: parameters) {(request, response, JSON, error) in
+                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+                callback(request: request, response: response, models: models, error: error)
+            }
+            
+        }
+        
+        /**
+        Performs a POST request. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
+        
+        Ex: var users = models as? [UserModel]
+        
+        :param: url The URL to perform a POST request on
+        :param: parameters The parameters to send on the request
+        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
+        */
+        func postList(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
+            
+            var c = {(json: JSONObject) -> HarmonicRestModel in
+                var model = self.creator(); model.parse(json); return model
+            };
+            
+            HarmonicConfig.adapter?.post(url, parameters: parameters) {(request, response, JSON, error) in
+                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+                callback(request: request, response: response, models: models, error: error)
+            }
+            
+        }
+        
+        /**
+        Performs a PUT request. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
+        
+        Ex: var users = models as? [UserModel]
+        
+        :param: url The URL to perform a PUT request on
+        :param: parameters The parameters to send on the request
+        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
+        */
+        func putList(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
+            
+            var c = {(json: JSONObject) -> HarmonicRestModel in
+                var model = self.creator(); model.parse(json); return model
+            };
+            
+            HarmonicConfig.adapter?.put(url, parameters: parameters) {(request, response, JSON, error) in
+                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+                callback(request: request, response: response, models: models, error: error)
+            }
+            
+        }
+        
+        /**
+        Performs a DELETE request. The callback passes in an Array of the HarmonicModel subclasses that this was called on.
+        
+        Ex: var users = models as? [UserModel]
+        
+        :param: url The URL to perform a DELETE request on
+        :param: parameters The parameters to send on the request
+        :param: callback The Array of the HarmonicModel subclasses that this was called on. The Array will need to be casted down.
+        */
+        func deleteList(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
+            
+            var c = {(json: JSONObject) -> HarmonicRestModel in
+                var model = self.creator(); model.parse(json); return model
+            };
+            
+            HarmonicConfig.adapter?.delete(url, parameters: parameters) {(request, response, JSON, error) in
+                var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
+                callback(request: request, response: response, models: models, error: error)
+            }
+            
+        }
         
         /**
         Performs a NSURLRequest. The callback passes in an instance of the HarmonicModel subclass that this was called on. The model instance will need to be casted down in order to use properly.
@@ -464,7 +482,7 @@ extension HarmonicRestModel {
         :param: request The NSURLRequest to perform
         :param: callback instance of the HarmonicModel subclass that this was called on.
         */
-        func request(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
+        func requestModel(request: NSURLRequest, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
             
             var model = creator()
             HarmonicConfig.adapter?.request(request) {(request, response, JSON, error) in
@@ -483,7 +501,7 @@ extension HarmonicRestModel {
         :param: parameters The parameters to send on the request
         :param: callback instance of the HarmonicModel subclass that this was called on.
         */
-        func get(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
+        func getModel(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
             
             var model = creator()
             println("Model - \(model)")
@@ -503,7 +521,7 @@ extension HarmonicRestModel {
         :param: parameters The parameters to send on the request
         :param: callback instance of the HarmonicModel subclass that this was called on.
         */
-        func post(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
+        func postModel(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
             
             var model = creator()
             HarmonicConfig.adapter?.post(url, parameters: parameters) {(request, response, JSON, error) in
@@ -522,7 +540,7 @@ extension HarmonicRestModel {
         :param: parameters The parameters to send on the request
         :param: callback instance of the HarmonicModel subclass that this was called on.
         */
-        func put(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
+        func putModel(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
             
             var model = creator()
             HarmonicConfig.adapter?.put(url, parameters: parameters) {(request, response, JSON, error) in
@@ -541,7 +559,7 @@ extension HarmonicRestModel {
         :param: parameters The parameters to send on the request
         :param: callback instance of the HarmonicModel subclass that this was called on.
         */
-        func delete(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
+        func deleteModel(url: String, parameters: [String: AnyObject]? = nil, callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
             
             var model = creator()
             HarmonicConfig.adapter?.delete(url, parameters: parameters) {(request, response, JSON, error) in
