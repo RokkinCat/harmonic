@@ -84,22 +84,22 @@ class ViewController: UIViewController {
         HarmonicConfig.adapter = HarmonicAlamofireAdapter()
 
         // Gets collection of users
-        UserModel.get {(request, response, models, error) in
-            
-            if let users = models as? [UserModel] {
-                users.each({
-                    (user) -> () in
-                    println("From Mock users.json API with model - \(user.firstName)")
-                })
+        UserModel.get()
+            .responseModels {(request, response, models, error) in
+                if let users = models as? [UserModel] {
+                    users.each({
+                        (user) -> () in
+                        println("From Mock users.json API with model - \(user.firstName)")
+                    })
+                }
             }
-
-        }
         
         // Gets user model
         var user = UserModel()
-        user.get(parameters: nil) {(request, response, model: HarmonicModel?, error) in
-            println("From Mock user.json API with model - \(user.firstName)")
-        }
+        user.get(parameters: nil)
+            .responseModel {(request, response, model: HarmonicModel?, error) in
+                println("From Mock user.json API with model - \(user.firstName)")
+            }
     }
 
 }
