@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
     
     func justDoStuff() {
-        self.justModelStuff()
+//        self.justModelStuff()
 //        self.justNetworkStuff()
 //        self.justModelNetworkStuff()
         
@@ -99,6 +99,9 @@ class ViewController: UIViewController {
         // Gets user model
         var user = UserModel()
         user.get(parameters: nil)
+            .response { (request, response, JSON, error) -> Void in
+                println("Response - \(JSON)")
+            }
             .responseModel {(request, response, model: HarmonicRestModel?, error) in
                 println("From Mock user.json API with model - \(user.firstName)  \(user.lastName) \(user.birthday)")
             }
@@ -111,7 +114,7 @@ class ViewController: UIViewController {
         var user = UserModel()
         user.request(.GET, url: "https://raw.githubusercontent.com/joshdholtz/harmonic/master/data_wrapped_user.json")
             .responseModelWrappedInData {(request, response, model: HarmonicRestModel?, error) in
-                println("From Mock user.json API with model - \(user.firstName)  \(user.lastName) \(user.birthday)")
+                println("From Mock user.json API with data wrapped model - \(user.firstName)  \(user.lastName) \(user.birthday)")
             }
     }
 
@@ -135,15 +138,17 @@ struct MyCustomFormatter {
 
 extension HarmonicRestModel.HarmonicRestModelRequest {
     
-    func responseModelWrappedInData(callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
-        self.callback = { (request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) in
+    func responseModelWrappedInData(callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) -> Self {
+        return response({ (request, response, JSON, error) -> Void in
             var model = self.creator()
             if let json = JSON as? JSONObject {
                 model.parse(json["data"] as JSONObject)
             }
             callback(request: request, response: response, model: model, error: error)
             
-        }
+            return
+        })
+
     }
     
 }

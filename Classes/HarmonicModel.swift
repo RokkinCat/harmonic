@@ -201,64 +201,76 @@ extension HarmonicRestModel {
         var method: Method
         var url: String
         var parameters: [String: AnyObject]? = nil
-        var callback: HarmonicRestModelCallback?
         var creator: (Void) -> HarmonicRestModel
+        
+        let queue: NSOperationQueue
+        var request: NSURLRequest?
+        var response: NSURLResponse?
+        var JSON: AnyObject?
+        var error: NSError?
         
         init(method: Method, url: String, parameters: [String: AnyObject]? = nil, creator: (Void) -> HarmonicRestModel) {
             self.method = method
             self.url = url
             self.parameters = parameters
             self.creator = creator
+            
+            self.queue = NSOperationQueue()
+            self.queue.suspended = true
+            self.queue.maxConcurrentOperationCount = 1
         }
         
-        func responseModel(callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
-            self.callback = { (request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) in
+        func callback(request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) {
+            self.request = request
+            self.response = response
+            self.JSON = JSON
+            self.error = error
+            
+            self.queue.suspended = false
+        }
+        
+        func response(callback: (request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) -> Void) -> Self {
+            self.queue.addOperationWithBlock { () -> Void in
+                callback(request: self.request, response: self.response, JSON: self.JSON, error: self.error)
+            }
+            return self
+        }
+        
+        func responseModel(callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) -> Self {
+            return response({ (request, response, JSON, error) -> Void in
                 var model = self.creator()
                 if (JSON is JSONObject) { model.parse(JSON as JSONObject) }
                 callback(request: request, response: response, model: model, error: error)
                 
-            }
+                return
+            })
+
         }
         
-        func responseModels(callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) {
-            self.callback = { (request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) in
-                
+        func responseModels(callback: (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void) -> Self {
+            return response({ (request, response, JSON, error) -> Void in
                 var c = {(json: JSONObject) -> HarmonicRestModel in
                     var model = self.creator(); model.parse(json); return model
                 };
                 var models: [HarmonicRestModel]? = (JSON as? JSONArray)!.map {(JSON) in return c(JSON) }
                 callback(request: request, response: response, models: models, error: error)
-                
-            }
+
+                return
+            })
+            
         }
 
         func doWork() -> Self {
 
             switch self.method {
             case .GET:
-                HarmonicConfig.adapter?.get(url, parameters: parameters, callback: { (request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) in
-                    if (self.callback != nil) {
-                        self.callback!(request: request, response: response, json: JSON, error: error)
-                    }
-                })
+                HarmonicConfig.adapter?.get(url, parameters: parameters, callback: self.callback)
             case .POST:
-                HarmonicConfig.adapter?.post(url, parameters: parameters, callback: { (request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) in
-                    if (self.callback != nil) {
-                        self.callback!(request: request, response: response, json: JSON, error: error)
-                    }
-                })
+                HarmonicConfig.adapter?.post(url, parameters: parameters, callback: self.callback)
             case .PUT:
-                HarmonicConfig.adapter?.put(url, parameters: parameters, callback: { (request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) in
-                    if (self.callback != nil) {
-                        self.callback!(request: request, response: response, json: JSON, error: error)
-                    }
-                })
+                HarmonicConfig.adapter?.put(url, parameters: parameters, callback: self.callback)
             case .DELETE:
-                HarmonicConfig.adapter?.delete(url, parameters: parameters, callback: { (request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) in
-                    if (self.callback != nil) {
-                        self.callback!(request: request, response: response, json: JSON, error: error)
-                    }
-                })
+                HarmonicConfig.adapter?.delete(url, parameters: parameters, callback: self.callback)
             default:
                 println("Oops")
             }
