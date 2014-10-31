@@ -18,8 +18,8 @@ class ViewController: UIViewController {
     }
     
     func justDoStuff() {
-//        self.justModelStuff()
-//        self.justNetworkStuff()
+        self.justModelStuff()
+        self.justNetworkStuff()
         self.justModelNetworkStuff()
     }
     
@@ -98,7 +98,7 @@ class ViewController: UIViewController {
         var user = UserModel()
         user.get(parameters: nil)
             .responseModel {(request, response, model: HarmonicModel?, error) in
-                println("From Mock user.json API with model - \(user.firstName)")
+                println("From Mock user.json API with model - \(user.firstName)  \(user.lastName) \(user.birthday)")
             }
     }
 
