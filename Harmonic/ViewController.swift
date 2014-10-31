@@ -18,9 +18,11 @@ class ViewController: UIViewController {
     }
     
     func justDoStuff() {
-        self.justModelStuff()
-        self.justNetworkStuff()
-        self.justModelNetworkStuff()
+//        self.justModelStuff()
+//        self.justNetworkStuff()
+//        self.justModelNetworkStuff()
+        
+        self.justCustomParsing()
     }
     
     func justModelStuff() {
@@ -97,7 +99,18 @@ class ViewController: UIViewController {
         // Gets user model
         var user = UserModel()
         user.get(parameters: nil)
-            .responseModel {(request, response, model: HarmonicModel?, error) in
+            .responseModel {(request, response, model: HarmonicRestModel?, error) in
+                println("From Mock user.json API with model - \(user.firstName)  \(user.lastName) \(user.birthday)")
+            }
+    }
+    
+    func justCustomParsing() {
+        HarmonicConfig.adapter = HarmonicAlamofireAdapter()
+        
+        // Gets user model
+        var user = UserModel()
+        user.request(.GET, url: "https://raw.githubusercontent.com/joshdholtz/harmonic/master/data_wrapped_user.json")
+            .responseModelWrappedInData {(request, response, model: HarmonicRestModel?, error) in
                 println("From Mock user.json API with model - \(user.firstName)  \(user.lastName) \(user.birthday)")
             }
     }
@@ -116,6 +129,21 @@ struct MyCustomFormatter {
         date = dateStringFormatter.dateFromString(object as String)
         
         return date
+    }
+    
+}
+
+extension HarmonicRestModel.HarmonicRestModelRequest {
+    
+    func responseModelWrappedInData(callback: (request: NSURLRequest?, response: NSURLResponse?, model: HarmonicRestModel?, error: NSError?) -> Void) {
+        self.callback = { (request: NSURLRequest?, response: NSURLResponse?, JSON: AnyObject?, error: NSError?) in
+            var model = self.creator()
+            if let json = JSON as? JSONObject {
+                model.parse(json["data"] as JSONObject)
+            }
+            callback(request: request, response: response, model: model, error: error)
+            
+        }
     }
     
 }
