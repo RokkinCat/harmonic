@@ -19,21 +19,29 @@ extension Alamofire.Request {
         }
     }
     
-    func responseHarmonic<T: HarmonicModel>(modelMaker: HarmonicModelMaker<T>.Type, completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
+    func responseHarmonic<T: HarmonicModel>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
         
         return responseJSON({ (request, response, JSON, error) in
-            let model = JSON >>> HarmonicModel.ToJSONObject >>> modelMaker.createModel
+            let model = JSON >>> self.toJSONObject >>> HarmonicModelMaker<T>().createModel
             completionHandler(request, response, model, error)
         })
     }
     
-    func responseHarmonics<T: HarmonicModel>(modelMaker: HarmonicModelMaker<T>.Type, completionHandler: (NSURLRequest, NSHTTPURLResponse?, Array<T>?, NSError?) -> Void) -> Self {
+    func responseHarmonics<T: HarmonicModel>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, Array<T>?, NSError?) -> Void) -> Self {
         
         return responseJSON({ (request, response, JSON, error) in
-            let models  = JSON >>> HarmonicModel.ToJSONArray >>> modelMaker.createCollection
+            let models  = JSON >>> self.toJSONArray >>> HarmonicModelMaker<T>().createCollection
             completionHandler(request, response, models, error)
         })
         
+    }
+    
+    func toJSONObject(object: AnyObject?) -> JSONObject? {
+        return object as? JSONObject
+    }
+    
+    func toJSONArray(object: AnyObject?) -> JSONArray? {
+        return object as? JSONArray
     }
     
 }
@@ -45,6 +53,7 @@ class HarmonicAlamofireAdapter: HarmonicNetworkAdapter {
     
     convenience init() {
         self.init(manager: Alamofire.Manager.sharedInstance)
+        
     }
     
     init(manager: Alamofire.Manager, encoding: Alamofire.ParameterEncoding = Alamofire.ParameterEncoding.URL) {
@@ -53,8 +62,8 @@ class HarmonicAlamofireAdapter: HarmonicNetworkAdapter {
     }
     
     func URLRequest(method: Alamofire.Method, _ URL: String) -> NSURLRequest {
-        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URL))
-        mutableURLRequest.HTTPMethod = method.toRaw()
+        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URL)!)
+        mutableURLRequest.HTTPMethod = method.rawValue
         
         return mutableURLRequest
     }
