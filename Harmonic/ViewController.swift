@@ -18,11 +18,11 @@ class ViewController: UIViewController {
     }
     
     func justDoStuff() {
-//        self.justModelStuff()
+        self.justModelStuff()
 //        self.justNetworkStuff()
 //        self.justModelNetworkStuff()
         
-        self.justCustomParsing()
+//        self.justCustomParsing()
     }
     
     func justModelStuff() {
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         var jsons = [json]
         
         // Single model
-        var user = HarmonicModelMaker<UserModel>().createModel(json)
+        var user = HarmonicModelMaker<UserNonRestModel>().createModel(json)
         
         println("User - \(user.firstName) \(user.lastName) \(user.birthday)")
         println("\tBest Friend - \(user.bestFriend?.firstName) \(user.bestFriend?.lastName)")
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         })
         
         // Collection of model
-        var users = HarmonicModelMaker<UserModel>().createCollection(jsons)
+        var users = HarmonicModelMaker<UserNonRestModel>().createCollection(jsons)
         var userInUsers = users[0]
         println("User in Users - \(userInUsers.firstName) \(userInUsers.lastName) \(userInUsers.birthday)")
         println("\tBest Friend - \(userInUsers.bestFriend?.firstName) \(userInUsers.bestFriend?.lastName)")

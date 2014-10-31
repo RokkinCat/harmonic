@@ -14,6 +14,7 @@
 		03044473199976B500F47756 /* HarmonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03044472199976B500F47756 /* HarmonicTests.swift */; };
 		0304447E1999771300F47756 /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
 		030444801999792C00F47756 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
+		0323A1CF1A03F53300CF45A0 /* UserNonRestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323A1CE1A03F53300CF45A0 /* UserNonRestModel.swift */; };
 		03B697921999B80A0001511B /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
 		03B697931999B80D0001511B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
 		03B697961999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
@@ -64,6 +65,7 @@
 		03044472199976B500F47756 /* HarmonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicTests.swift; sourceTree = "<group>"; };
 		0304447D1999771300F47756 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
 		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		0323A1CE1A03F53300CF45A0 /* UserNonRestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNonRestModel.swift; sourceTree = "<group>"; };
 		03A4BB7519AD7E35001E7C87 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Lib/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		03B697951999B9220001511B /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
 		03CCC67A199B09330009D477 /* HarmonicAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicAlamofire.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				0304447F1999792C00F47756 /* UserModel.swift */,
+				0323A1CE1A03F53300CF45A0 /* UserNonRestModel.swift */,
 				03B697951999B9220001511B /* BrokenUserModel.swift */,
 			);
 			name = TestModels;
@@ -306,6 +309,7 @@
 				0304447E1999771300F47756 /* HarmonicModel.swift in Sources */,
 				03044462199976B500F47756 /* ViewController.swift in Sources */,
 				03B697961999B9220001511B /* BrokenUserModel.swift in Sources */,
+				0323A1CF1A03F53300CF45A0 /* UserNonRestModel.swift in Sources */,
 				030444801999792C00F47756 /* UserModel.swift in Sources */,
 				03CCC67B199B09330009D477 /* HarmonicAlamofire.swift in Sources */,
 				03044460199976B500F47756 /* AppDelegate.swift in Sources */,
