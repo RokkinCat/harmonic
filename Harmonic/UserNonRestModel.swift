@@ -21,11 +21,19 @@ class UserNonRestModel: HarmonicModel {
     }
     
     func parse(json : JSONObject) {
+        // Custom operators
         self.firstName <*> json["first_name"]
         self.lastName <*> json["last_name"]
         self.bestFriend <*> json["best_friend"]
         self.friends <*> json["friends"]
         self.birthday <*> json["birthday"] >>> MyCustomFormatter.ToBirthday
+
+        // Non-custom operators
+//        self.firstName = json["first_name"] as? String
+//        self.lastName = json["last_name"] as? String
+//        self.bestFriend = HarmonicModelMaker<UserModel>().createModel(json["best_friend"] as JSONObject)
+//        self.friends = HarmonicModelMaker<UserModel>().createCollection(json["friends"] as JSONArray)
+//        self.birthday = MyCustomFormatter.ToBirthday(json["birthday"] as String)
     }
     
 }
