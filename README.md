@@ -63,11 +63,11 @@ class UserModel: HarmonicModel {
     var birthday: NSDate?
     
     override func parse(json : JSONObject) {
-        self.firstName = json["first_name"] >>> ToString
-        self.lastName = json["last_name"] >>> ToString
-        self.bestFriend = json["best_friend"] >>> ToJSONObject >>> HarmonicModelMaker<UserModel>.createModel
-        self.friends = json["friends"] >>> ToJSONArray >>> HarmonicModelMaker<UserModel>.createCollection
-        self.birthday = json["birthday"] >>> MyCustomFormatter.ToBirthday
+        self.firstName <*> json["first_name"]
+        self.lastName <*> json["last_name"]
+        self.bestFriend <*> json["best_friend"]
+        self.friends <*> json["friends"]
+        self.birthday <*> json["birthday"] >>> MyCustomFormatter.ToBirthday
     }
     
 }
