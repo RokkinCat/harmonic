@@ -14,7 +14,6 @@
 		03044473199976B500F47756 /* HarmonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03044472199976B500F47756 /* HarmonicTests.swift */; };
 		0304447E1999771300F47756 /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
 		030444801999792C00F47756 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
-		0323A1CF1A03F53300CF45A0 /* UserNonRestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323A1CE1A03F53300CF45A0 /* UserNonRestModel.swift */; };
 		03B697921999B80A0001511B /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
 		03B697931999B80D0001511B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
 		03B697961999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
@@ -43,7 +42,6 @@
 		03044472199976B500F47756 /* HarmonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicTests.swift; sourceTree = "<group>"; };
 		0304447D1999771300F47756 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
 		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		0323A1CE1A03F53300CF45A0 /* UserNonRestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNonRestModel.swift; sourceTree = "<group>"; };
 		03B697951999B9220001511B /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				0304447F1999792C00F47756 /* UserModel.swift */,
-				0323A1CE1A03F53300CF45A0 /* UserNonRestModel.swift */,
 				03B697951999B9220001511B /* BrokenUserModel.swift */,
 			);
 			name = TestModels;
@@ -186,7 +183,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Josh Holtz";
 				TargetAttributes = {
 					03044459199976B500F47756 = {
@@ -260,7 +257,6 @@
 				0304447E1999771300F47756 /* HarmonicModel.swift in Sources */,
 				03044462199976B500F47756 /* ViewController.swift in Sources */,
 				03B697961999B9220001511B /* BrokenUserModel.swift in Sources */,
-				0323A1CF1A03F53300CF45A0 /* UserNonRestModel.swift in Sources */,
 				030444801999792C00F47756 /* UserModel.swift in Sources */,
 				03044460199976B500F47756 /* AppDelegate.swift in Sources */,
 			);
@@ -319,6 +315,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -381,11 +378,11 @@
 		03044477199976B500F47756 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Harmonic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joshholtz.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -394,11 +391,11 @@
 		03044478199976B500F47756 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Harmonic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joshholtz.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -418,6 +415,7 @@
 				);
 				INFOPLIST_FILE = HarmonicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joshholtz.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -433,6 +431,7 @@
 				);
 				INFOPLIST_FILE = HarmonicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joshholtz.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
