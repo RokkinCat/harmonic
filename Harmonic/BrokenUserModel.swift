@@ -17,11 +17,11 @@ class BrokenUserModel: HarmonicModel {
     var birthday : NSDate?;
 	
 	required init(json: JSONObject) {
-        self.firstName <*> json["first_name"]
-        self.lastName <*> json["elLastNameo"]
-        self.bestFriend <*> json["best_frienddddd"]
-        self.friends <*> json["friendssss"]
-        self.birthday <*> json["birfday"] >>> MyCustomFormatters.toBirthday
-    }
-    
+		self.firstName <*> json["first_name"]
+		self.lastName <*> json["elLastNameo"]
+		self.bestFriend <*> json["best_frienddddd"]
+		self.friends <*> json["friendssss"]
+		self.birthday <*> json["birfday"] >>> MyCustomFormatters.toBirthday
+	}
+	
 }

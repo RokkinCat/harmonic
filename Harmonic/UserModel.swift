@@ -15,13 +15,13 @@ class UserModel: HarmonicModel {
     var bestFriend: UserModel?
     var friends: Array<UserModel>?
     var birthday: NSDate?
-
+	
 	required init(json: JSONObject) {
 		self.firstName <*> json["first_name"]
 		self.lastName <*> json["last_name"]
 		self.bestFriend <*> json["best_friend"]
 		self.friends <*> json["friends"]
 		self.birthday <*> json["birthday"] >>> MyCustomFormatters.toBirthday
-    }
+	}
     
 }

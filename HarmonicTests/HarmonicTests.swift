@@ -28,7 +28,7 @@ class HarmonicTests: XCTestCase {
     }
     
     func testUserModel() {
-        let user = UserModel.parse(jsonUser1)
+        let user = UserModel(json: jsonUser1)
         self.commonUserTest(user)
     }
     
@@ -40,7 +40,7 @@ class HarmonicTests: XCTestCase {
     }
 	
 	func testStructUserModel() {
-		let user = StructUserModel.parse(jsonUser1)
+		let user = StructUserModel(json: jsonUser1)
 		self.commonUserTest(user)
 	}
 	

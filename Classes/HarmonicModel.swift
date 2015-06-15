@@ -46,7 +46,7 @@ func <*><A, B>(inout a: A?, b: B?) {
 }
 
 protocol HarmonicModel {
-    init(json : JSONObject)
+	 init(json: JSONObject)
 }
 
 enum HarmonicError: ErrorType {
@@ -63,7 +63,8 @@ extension HarmonicModel {
 	static func parse(json: JSONArray) -> [Self] {
 		var models : Array<Self> = []
 		for obj in json {
-			models.append( Self(json: obj) )
+			let model = Self(json: obj)
+			models.append(model)
 		}
 		return models
 	}
