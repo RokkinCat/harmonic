@@ -19,7 +19,6 @@
 		03B697931999B80D0001511B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
 		03B697961999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
 		03B697971999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
-		03CCC67B199B09330009D477 /* HarmonicAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CCC67A199B09330009D477 /* HarmonicAlamofire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,27 +28,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 03044459199976B500F47756;
 			remoteInfo = Harmonic;
-		};
-		03A4BB7A19AD7E35001E7C87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03A4BB7519AD7E35001E7C87 /* Alamofire.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
-			remoteInfo = Alamofire;
-		};
-		03A4BB7C19AD7E35001E7C87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03A4BB7519AD7E35001E7C87 /* Alamofire.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
-			remoteInfo = AlamofireTests;
-		};
-		03A4BB8019AD7EED001E7C87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03A4BB7519AD7E35001E7C87 /* Alamofire.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
-			remoteInfo = Alamofire;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -66,9 +44,7 @@
 		0304447D1999771300F47756 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
 		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0323A1CE1A03F53300CF45A0 /* UserNonRestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNonRestModel.swift; sourceTree = "<group>"; };
-		03A4BB7519AD7E35001E7C87 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Lib/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		03B697951999B9220001511B /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
-		03CCC67A199B09330009D477 /* HarmonicAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicAlamofire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +72,6 @@
 				0304445C199976B500F47756 /* Harmonic */,
 				0304446F199976B500F47756 /* HarmonicTests */,
 				0304445B199976B500F47756 /* Products */,
-				03A4BB7519AD7E35001E7C87 /* Alamofire.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,18 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				0304447D1999771300F47756 /* HarmonicModel.swift */,
-				03CCC679199B09070009D477 /* Alamofire */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		03A4BB7619AD7E35001E7C87 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				03A4BB7B19AD7E35001E7C87 /* Alamofire.framework */,
-				03A4BB7D19AD7E35001E7C87 /* AlamofireTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		03B697941999B9010001511B /* TestModels */ = {
@@ -175,14 +140,6 @@
 			name = TestModels;
 			sourceTree = "<group>";
 		};
-		03CCC679199B09070009D477 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				03CCC67A199B09330009D477 /* HarmonicAlamofire.swift */,
-			);
-			path = Alamofire;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,11 +150,11 @@
 				03044456199976B500F47756 /* Sources */,
 				03044457199976B500F47756 /* Frameworks */,
 				03044458199976B500F47756 /* Resources */,
+				03018EF01B2E463D00F13F41 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				03A4BB8119AD7EED001E7C87 /* PBXTargetDependency */,
 			);
 			name = Harmonic;
 			productName = Harmonic;
@@ -228,6 +185,7 @@
 		03044452199976B500F47756 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Josh Holtz";
 				TargetAttributes = {
@@ -251,12 +209,6 @@
 			mainGroup = 03044451199976B500F47756;
 			productRefGroup = 0304445B199976B500F47756 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 03A4BB7619AD7E35001E7C87 /* Products */;
-					ProjectRef = 03A4BB7519AD7E35001E7C87 /* Alamofire.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				03044459199976B500F47756 /* Harmonic */,
@@ -264,23 +216,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		03A4BB7B19AD7E35001E7C87 /* Alamofire.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Alamofire.framework;
-			remoteRef = 03A4BB7A19AD7E35001E7C87 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03A4BB7D19AD7E35001E7C87 /* AlamofireTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = AlamofireTests.xctest;
-			remoteRef = 03A4BB7C19AD7E35001E7C87 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		03044458199976B500F47756 /* Resources */ = {
@@ -301,6 +236,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03018EF01B2E463D00F13F41 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		03044456199976B500F47756 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -311,7 +262,6 @@
 				03B697961999B9220001511B /* BrokenUserModel.swift in Sources */,
 				0323A1CF1A03F53300CF45A0 /* UserNonRestModel.swift in Sources */,
 				030444801999792C00F47756 /* UserModel.swift in Sources */,
-				03CCC67B199B09330009D477 /* HarmonicAlamofire.swift in Sources */,
 				03044460199976B500F47756 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,11 +284,6 @@
 			isa = PBXTargetDependency;
 			target = 03044459199976B500F47756 /* Harmonic */;
 			targetProxy = 0304446D199976B500F47756 /* PBXContainerItemProxy */;
-		};
-		03A4BB8119AD7EED001E7C87 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			targetProxy = 03A4BB8019AD7EED001E7C87 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -20,7 +20,7 @@ class UserNonRestModel: HarmonicModel {
 
     }
     
-    func parse(json : JSONObject) {
+    func handleParse(json : JSONObject) {
         // Custom operators
         self.firstName <*> json["first_name"]
         self.lastName <*> json["last_name"]

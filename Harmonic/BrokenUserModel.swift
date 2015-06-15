@@ -8,19 +8,19 @@
 
 import Foundation
 
-class BrokenUserModel: HarmonicRestModel, HarmonicModel {
+class BrokenUserModel: HarmonicModel {
     
     var firstName : String?;
     var lastName : String?;
     var bestFriend : UserModel?;
     var friends : Array<UserModel>?;
     var birthday : NSDate?;
-    
-    required init() {
-        super.init()
-    }
-    
-    override func parse(json : JSONObject) {
+	
+	required init() {
+		
+	}
+	
+	func handleParse(json : JSONObject) {
         self.firstName <*> json["first_name"]
         self.lastName <*> json["elLastNameo"]
         self.bestFriend <*> json["best_frienddddd"]
