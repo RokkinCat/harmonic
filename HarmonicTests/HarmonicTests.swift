@@ -28,13 +28,12 @@ class HarmonicTests: XCTestCase {
     }
     
     func testUserModel() {
-        let user : UserModel = HarmonicModelMaker<UserModel>().createModel(jsonUser1)
-        
+        let user = UserModel.parse(jsonUser1)
         self.commonUserTest(user)
     }
     
     func testUserModels() {
-        var users : Array<UserModel> = HarmonicModelMaker<UserModel>().createCollection([jsonUser1])
+        let users = UserModel.parse([jsonUser1])
         let user : UserModel =  users[0]
         
         self.commonUserTest(user)
@@ -43,7 +42,7 @@ class HarmonicTests: XCTestCase {
     func testUserModelString() {
         var user: UserModel?
         do {
-            user = try HarmonicModelMaker<UserModel>().createModel("{\"birthday\":\"1989-03-01\",\"first_name\":\"Josh\",\"friends\":[{\"first_name\":\"Red Ranger\"},{\"first_name\":\"Green Ranger\"}],\"last_name\":\"Holtz\",\"best_friend\":{\"first_name\":\"Bandit\",\"last_name\":\"The Cat\"}}")
+            user = try UserModel.parse("{\"birthday\":\"1989-03-01\",\"first_name\":\"Josh\",\"friends\":[{\"first_name\":\"Red Ranger\"},{\"first_name\":\"Green Ranger\"}],\"last_name\":\"Holtz\",\"best_friend\":{\"first_name\":\"Bandit\",\"last_name\":\"The Cat\"}}")
         } catch {
 			user = nil
         }
@@ -56,7 +55,7 @@ class HarmonicTests: XCTestCase {
     func testUserModelsString() {
         var users: [UserModel]?
         do {
-            users = try HarmonicModelMaker<UserModel>().createCollection("[{\"birthday\":\"1989-03-01\",\"first_name\":\"Josh\",\"friends\":[{\"first_name\":\"Red Ranger\"},{\"first_name\":\"Green Ranger\"}],\"last_name\":\"Holtz\",\"best_friend\":{\"first_name\":\"Bandit\",\"last_name\":\"The Cat\"}}]")
+            users = try UserModel.parse("[{\"birthday\":\"1989-03-01\",\"first_name\":\"Josh\",\"friends\":[{\"first_name\":\"Red Ranger\"},{\"first_name\":\"Green Ranger\"}],\"last_name\":\"Holtz\",\"best_friend\":{\"first_name\":\"Bandit\",\"last_name\":\"The Cat\"}}]")
         } catch {
             users = nil
 			XCTFail("Could not parse JSON collection string")
@@ -76,7 +75,7 @@ class HarmonicTests: XCTestCase {
         //  - has bestFriend mapped incorrectly
         //  - has friends mapped incorrectly
         //  - has format function on birthday incorrectly
-		let user : BrokenUserModel = HarmonicModelMaker<BrokenUserModel>().createModel(jsonUser1)
+		let user : BrokenUserModel = BrokenUserModel.parse(jsonUser1)
         
         // The good
         XCTAssertEqual(jsonUser1["first_name"]! as! String, user.firstName!, "First names should equal");
