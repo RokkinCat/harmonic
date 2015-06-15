@@ -40,7 +40,7 @@ You will notice there is an operator that you (may) have not seen before. This `
 ## What happens if `last_name` is't a String then?
 If the value in `json["last_name"]` is not actually of type `String`, it will not be assigned and `lastName` will remain nil.
 */
-let jsonUserWrong: Dictionary<String, AnyObject> = ["first_name" : "Red", "last_name" : 10]
+let jsonUserWrong: Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : 10]
 
 let userWrong = UserModel(json: jsonUserWrong)
 print("First name: \(userWrong.firstName)")
