@@ -1,11 +1,7 @@
 /*:
 # Welcome to the Harmonic Playground
 We will walk you through with the simplest Harmonic example to something a little more advanced and custom.
-*/
 
-import UIKit
-
-/*:
 We will first create some sample JSON objects that we will parse with Harmonic. These JSON objects simple contain a first and last name.
 */
 let jsonUser: Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz"]
@@ -44,4 +40,12 @@ let jsonUserWrong: Dictionary<String, AnyObject> = ["first_name" : "Josh", "last
 
 let userWrong = UserModel(json: jsonUserWrong)
 print("First name: \(userWrong.firstName)")
-print("Last name: \(userWrong.lastName)") // This will be nil because `10` isn't a `String`
+print("Last name: \(userWrong.lastName)") // This will be nil
+/*:
+This line above will be nil because `10` isn't a `String`.
+
+## Now it's your turn!
+Change some values in the JSON objects above and in the `UserModel` to see how things behave.
+*/
+
+
