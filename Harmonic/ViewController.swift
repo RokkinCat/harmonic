@@ -35,8 +35,8 @@ class ViewController: UIViewController {
         let jsons = [json]
         
         // Single model
-        let user = UserModel.parse(json)
-        
+        let user = UserModel.parse(json)  // OR UserModel.parse(json)
+		
         print("User - \(user.firstName) \(user.lastName) \(user.birthday)")
         print("\tBest Friend - \(user.bestFriend?.firstName) \(user.bestFriend?.lastName)")
 		if let friends = user.friends {
@@ -45,9 +45,10 @@ class ViewController: UIViewController {
 			}
         }
         
-        // Collection of model
-        var users = UserModel.parse(jsons)
+        // Collection of models
+        let users = UserModel.parse(jsons)
         let userInUsers = users[0]
+		
         print("User in Users - \(userInUsers.firstName) \(userInUsers.lastName) \(userInUsers.birthday)")
         print("\tBest Friend - \(userInUsers.bestFriend?.firstName) \(userInUsers.bestFriend?.lastName)")
 		if let friends = user.friends {

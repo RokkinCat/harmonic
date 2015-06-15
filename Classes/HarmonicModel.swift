@@ -12,13 +12,7 @@ import Foundation
 typealias JSONObject = Dictionary<String, AnyObject>
 typealias JSONArray = Array<JSONObject>
 
-typealias HarmonicRestModelCallback = (request: NSURLRequest?, response: NSURLResponse?, json: AnyObject?, error: NSError?) -> Void
-//typealias HarmonicRestModelCallback = (request: NSURLRequest?, response: NSURLResponse?, models: HarmonicRestModel?, error: NSError?) -> Void
-//typealias HarmonicRestModelsCallback = (request: NSURLRequest?, response: NSURLResponse?, models: [HarmonicRestModel]?, error: NSError?) -> Void
-
-// Used for monad for awesomely easy parsing
 infix operator >>> { associativity left precedence 170 }
-
 func >>><A, B>(a: A?, f: A -> B?) -> B? {
     if let x = a {
         return f(x)
@@ -28,7 +22,6 @@ func >>><A, B>(a: A?, f: A -> B?) -> B? {
 }
 
 infix operator <*> { associativity left precedence 160 }
-
 func <*><A: HarmonicModel, B>(inout a: Array<A>?, b: B?) {
     if let c = b as? JSONArray {
 		a = A.parse(c)
