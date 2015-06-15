@@ -38,7 +38,19 @@ class HarmonicTests: XCTestCase {
         
         self.commonUserTest(user)
     }
-    
+	
+	func testStructUserModel() {
+		let user = StructUserModel.parse(jsonUser1)
+		self.commonUserTest(user)
+	}
+	
+	func testStructUserModels() {
+		let users = StructUserModel.parse([jsonUser1])
+		let user : StructUserModel =  users[0]
+		
+		self.commonUserTest(user)
+	}
+	
     func testUserModelString() {
         var user: UserModel?
         do {
@@ -113,22 +125,20 @@ class HarmonicTests: XCTestCase {
         XCTAssertEqual( Int(birthdayParts[2])! ,  user.birthday!.day(), "Birthdy days should equal")
     }
 	
-}
-
-struct MyCustomFormatter {
-    
-    static func ToBirthday(object: AnyObject) -> NSDate? {
-        
-        var date: NSDate?
-        
-        let dateStringFormatter = NSDateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd"
-        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        date = dateStringFormatter.dateFromString(object as! String)
-        
-        return date
-    }
-    
+	func commonUserTest(user : StructUserModel) {
+		// Standard variables
+		XCTAssertEqual(jsonUser1["first_name"]! as! String, user.firstName!, "First names should equal")
+		XCTAssertEqual(jsonUser1["last_name"]! as! String, user.lastName!, "Last name should equal ")
+		
+		// Formatter function
+		XCTAssertNotNil(user.birthday, "Birthday should not be nil")
+		
+		var birthdayParts : Array<String> = (jsonUser1["birthday"]! as! String).componentsSeparatedByString("-")
+		XCTAssertEqual( Int(birthdayParts[0])! ,  user.birthday!.year(), "Birthdy years should equal")
+		XCTAssertEqual( Int(birthdayParts[1])! ,  user.birthday!.month(), "Birthdy months should equal")
+		XCTAssertEqual( Int(birthdayParts[2])! ,  user.birthday!.day(), "Birthdy days should equal")
+	}
+	
 }
 
 extension NSDate {

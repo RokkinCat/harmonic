@@ -16,16 +16,12 @@ class BrokenUserModel: HarmonicModel {
     var friends : Array<UserModel>?;
     var birthday : NSDate?;
 	
-	required init() {
-		
-	}
-	
-	func handleParse(json : JSONObject) {
+	required init(json: JSONObject) {
         self.firstName <*> json["first_name"]
         self.lastName <*> json["elLastNameo"]
         self.bestFriend <*> json["best_frienddddd"]
         self.friends <*> json["friendssss"]
-        self.birthday <*> json["birfday"] >>> MyCustomFormatter.ToBirthday
+        self.birthday <*> json["birfday"] >>> MyCustomFormatters.toBirthday
     }
     
 }

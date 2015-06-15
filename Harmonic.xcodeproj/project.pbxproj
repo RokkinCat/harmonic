@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03018EF21B2E54BE00F13F41 /* StructUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03018EF11B2E54BE00F13F41 /* StructUserModel.swift */; };
+		03018EF31B2E565700F13F41 /* StructUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03018EF11B2E54BE00F13F41 /* StructUserModel.swift */; };
 		03044460199976B500F47756 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304445F199976B500F47756 /* AppDelegate.swift */; };
 		03044462199976B500F47756 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03044461199976B500F47756 /* ViewController.swift */; };
 		03044465199976B500F47756 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03044463199976B500F47756 /* Main.storyboard */; };
@@ -14,6 +16,8 @@
 		03044473199976B500F47756 /* HarmonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03044472199976B500F47756 /* HarmonicTests.swift */; };
 		0304447E1999771300F47756 /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
 		030444801999792C00F47756 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
+		037DBB7B1B2E577600CD8574 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037DBB7A1B2E577600CD8574 /* Formatters.swift */; };
+		037DBB7C1B2E577600CD8574 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037DBB7A1B2E577600CD8574 /* Formatters.swift */; };
 		03B697921999B80A0001511B /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
 		03B697931999B80D0001511B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
 		03B697961999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
@@ -31,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03018EF11B2E54BE00F13F41 /* StructUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructUserModel.swift; sourceTree = "<group>"; };
 		0304445A199976B500F47756 /* Harmonic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Harmonic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0304445E199976B500F47756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0304445F199976B500F47756 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +47,7 @@
 		03044472199976B500F47756 /* HarmonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicTests.swift; sourceTree = "<group>"; };
 		0304447D1999771300F47756 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
 		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		037DBB7A1B2E577600CD8574 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		03B697951999B9220001511B /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +139,8 @@
 			children = (
 				0304447F1999792C00F47756 /* UserModel.swift */,
 				03B697951999B9220001511B /* BrokenUserModel.swift */,
+				03018EF11B2E54BE00F13F41 /* StructUserModel.swift */,
+				037DBB7A1B2E577600CD8574 /* Formatters.swift */,
 			);
 			name = TestModels;
 			sourceTree = "<group>";
@@ -255,10 +263,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0304447E1999771300F47756 /* HarmonicModel.swift in Sources */,
+				03018EF21B2E54BE00F13F41 /* StructUserModel.swift in Sources */,
 				03044462199976B500F47756 /* ViewController.swift in Sources */,
 				03B697961999B9220001511B /* BrokenUserModel.swift in Sources */,
 				030444801999792C00F47756 /* UserModel.swift in Sources */,
 				03044460199976B500F47756 /* AppDelegate.swift in Sources */,
+				037DBB7B1B2E577600CD8574 /* Formatters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +276,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				037DBB7C1B2E577600CD8574 /* Formatters.swift in Sources */,
 				03B697921999B80A0001511B /* HarmonicModel.swift in Sources */,
+				03018EF31B2E565700F13F41 /* StructUserModel.swift in Sources */,
 				03B697971999B9220001511B /* BrokenUserModel.swift in Sources */,
 				03B697931999B80D0001511B /* UserModel.swift in Sources */,
 				03044473199976B500F47756 /* HarmonicTests.swift in Sources */,
