@@ -15,6 +15,11 @@
 		0304447E1999771300F47756 /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
 		030444801999792C00F47756 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
 		0323A1CF1A03F53300CF45A0 /* UserNonRestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323A1CE1A03F53300CF45A0 /* UserNonRestModel.swift */; };
+		0324E14A1B39F46C00C12603 /* Harmonic-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0324E1491B39F46C00C12603 /* Harmonic-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0324E1501B39F46C00C12603 /* Harmonic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0324E1451B39F46C00C12603 /* Harmonic.framework */; };
+		0324E1591B39F46C00C12603 /* Harmonic_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324E1581B39F46C00C12603 /* Harmonic_iOSTests.swift */; };
+		0324E15C1B39F46C00C12603 /* Harmonic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0324E1451B39F46C00C12603 /* Harmonic.framework */; };
+		0324E15D1B39F46C00C12603 /* Harmonic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0324E1451B39F46C00C12603 /* Harmonic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03B697921999B80A0001511B /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447D1999771300F47756 /* HarmonicModel.swift */; };
 		03B697931999B80D0001511B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
 		03B697961999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
@@ -29,6 +34,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 03044459199976B500F47756;
 			remoteInfo = Harmonic;
+		};
+		0324E1511B39F46C00C12603 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03044452199976B500F47756 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0324E1441B39F46C00C12603;
+			remoteInfo = "Harmonic-iOS";
+		};
+		0324E1531B39F46C00C12603 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03044452199976B500F47756 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03044459199976B500F47756;
+			remoteInfo = Harmonic;
+		};
+		0324E15A1B39F46C00C12603 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03044452199976B500F47756 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0324E1441B39F46C00C12603;
+			remoteInfo = "Harmonic-iOS";
 		};
 		03A4BB7A19AD7E35001E7C87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -53,6 +79,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0324E1631B39F46C00C12603 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0324E15D1B39F46C00C12603 /* Harmonic.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0304445A199976B500F47756 /* Harmonic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Harmonic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0304445E199976B500F47756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,6 +106,12 @@
 		0304447D1999771300F47756 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
 		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0323A1CE1A03F53300CF45A0 /* UserNonRestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNonRestModel.swift; sourceTree = "<group>"; };
+		0324E1451B39F46C00C12603 /* Harmonic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Harmonic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0324E1481B39F46C00C12603 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0324E1491B39F46C00C12603 /* Harmonic-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Harmonic-iOS.h"; sourceTree = "<group>"; };
+		0324E14F1B39F46C00C12603 /* Harmonic-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Harmonic-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0324E1571B39F46C00C12603 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0324E1581B39F46C00C12603 /* Harmonic_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harmonic_iOSTests.swift; sourceTree = "<group>"; };
 		03A4BB7519AD7E35001E7C87 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Lib/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		03B697951999B9220001511B /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
 		03CCC67A199B09330009D477 /* HarmonicAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicAlamofire.swift; sourceTree = "<group>"; };
@@ -76,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0324E15C1B39F46C00C12603 /* Harmonic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +130,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0324E1411B39F46C00C12603 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0324E14C1B39F46C00C12603 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0324E1501B39F46C00C12603 /* Harmonic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +157,8 @@
 				0304447C1999770300F47756 /* Classes */,
 				0304445C199976B500F47756 /* Harmonic */,
 				0304446F199976B500F47756 /* HarmonicTests */,
+				0324E1461B39F46C00C12603 /* Harmonic-iOS */,
+				0324E1551B39F46C00C12603 /* Harmonic-iOSTests */,
 				0304445B199976B500F47756 /* Products */,
 				03A4BB7519AD7E35001E7C87 /* Alamofire.xcodeproj */,
 			);
@@ -105,6 +169,8 @@
 			children = (
 				0304445A199976B500F47756 /* Harmonic.app */,
 				0304446C199976B500F47756 /* HarmonicTests.xctest */,
+				0324E1451B39F46C00C12603 /* Harmonic.framework */,
+				0324E14F1B39F46C00C12603 /* Harmonic-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +222,40 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		0324E1461B39F46C00C12603 /* Harmonic-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				0324E1491B39F46C00C12603 /* Harmonic-iOS.h */,
+				0324E1471B39F46C00C12603 /* Supporting Files */,
+			);
+			path = "Harmonic-iOS";
+			sourceTree = "<group>";
+		};
+		0324E1471B39F46C00C12603 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0324E1481B39F46C00C12603 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0324E1551B39F46C00C12603 /* Harmonic-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				0324E1581B39F46C00C12603 /* Harmonic_iOSTests.swift */,
+				0324E1561B39F46C00C12603 /* Supporting Files */,
+			);
+			path = "Harmonic-iOSTests";
+			sourceTree = "<group>";
+		};
+		0324E1561B39F46C00C12603 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0324E1571B39F46C00C12603 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		03A4BB7619AD7E35001E7C87 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +285,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		0324E1421B39F46C00C12603 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0324E14A1B39F46C00C12603 /* Harmonic-iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		03044459199976B500F47756 /* Harmonic */ = {
 			isa = PBXNativeTarget;
@@ -193,11 +304,13 @@
 				03044456199976B500F47756 /* Sources */,
 				03044457199976B500F47756 /* Frameworks */,
 				03044458199976B500F47756 /* Resources */,
+				0324E1631B39F46C00C12603 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				03A4BB8119AD7EED001E7C87 /* PBXTargetDependency */,
+				0324E15B1B39F46C00C12603 /* PBXTargetDependency */,
 			);
 			name = Harmonic;
 			productName = Harmonic;
@@ -222,6 +335,43 @@
 			productReference = 0304446C199976B500F47756 /* HarmonicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0324E1441B39F46C00C12603 /* Harmonic-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0324E1621B39F46C00C12603 /* Build configuration list for PBXNativeTarget "Harmonic-iOS" */;
+			buildPhases = (
+				0324E1401B39F46C00C12603 /* Sources */,
+				0324E1411B39F46C00C12603 /* Frameworks */,
+				0324E1421B39F46C00C12603 /* Headers */,
+				0324E1431B39F46C00C12603 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Harmonic-iOS";
+			productName = "Harmonic-iOS";
+			productReference = 0324E1451B39F46C00C12603 /* Harmonic.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0324E14E1B39F46C00C12603 /* Harmonic-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0324E1641B39F46C00C12603 /* Build configuration list for PBXNativeTarget "Harmonic-iOSTests" */;
+			buildPhases = (
+				0324E14B1B39F46C00C12603 /* Sources */,
+				0324E14C1B39F46C00C12603 /* Frameworks */,
+				0324E14D1B39F46C00C12603 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0324E1521B39F46C00C12603 /* PBXTargetDependency */,
+				0324E1541B39F46C00C12603 /* PBXTargetDependency */,
+			);
+			name = "Harmonic-iOSTests";
+			productName = "Harmonic-iOSTests";
+			productReference = 0324E14F1B39F46C00C12603 /* Harmonic-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -236,6 +386,13 @@
 					};
 					0304446B199976B500F47756 = {
 						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 03044459199976B500F47756;
+					};
+					0324E1441B39F46C00C12603 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					0324E14E1B39F46C00C12603 = {
+						CreatedOnToolsVersion = 6.3.2;
 						TestTargetID = 03044459199976B500F47756;
 					};
 				};
@@ -261,6 +418,8 @@
 			targets = (
 				03044459199976B500F47756 /* Harmonic */,
 				0304446B199976B500F47756 /* HarmonicTests */,
+				0324E1441B39F46C00C12603 /* Harmonic-iOS */,
+				0324E14E1B39F46C00C12603 /* Harmonic-iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -299,6 +458,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0324E1431B39F46C00C12603 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0324E14D1B39F46C00C12603 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -327,6 +500,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0324E1401B39F46C00C12603 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0324E14B1B39F46C00C12603 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0324E1591B39F46C00C12603 /* Harmonic_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -334,6 +522,21 @@
 			isa = PBXTargetDependency;
 			target = 03044459199976B500F47756 /* Harmonic */;
 			targetProxy = 0304446D199976B500F47756 /* PBXContainerItemProxy */;
+		};
+		0324E1521B39F46C00C12603 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0324E1441B39F46C00C12603 /* Harmonic-iOS */;
+			targetProxy = 0324E1511B39F46C00C12603 /* PBXContainerItemProxy */;
+		};
+		0324E1541B39F46C00C12603 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03044459199976B500F47756 /* Harmonic */;
+			targetProxy = 0324E1531B39F46C00C12603 /* PBXContainerItemProxy */;
+		};
+		0324E15B1B39F46C00C12603 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0324E1441B39F46C00C12603 /* Harmonic-iOS */;
+			targetProxy = 0324E15A1B39F46C00C12603 /* PBXContainerItemProxy */;
 		};
 		03A4BB8119AD7EED001E7C87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -493,6 +696,92 @@
 			};
 			name = Release;
 		};
+		0324E15E1B39F46C00C12603 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Harmonic-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = Harmonic;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0324E15F1B39F46C00C12603 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Harmonic-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = Harmonic;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0324E1601B39F46C00C12603 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Harmonic-iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Harmonic.app/Harmonic";
+			};
+			name = Debug;
+		};
+		0324E1611B39F46C00C12603 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Harmonic-iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Harmonic.app/Harmonic";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -522,6 +811,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		0324E1621B39F46C00C12603 /* Build configuration list for PBXNativeTarget "Harmonic-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0324E15E1B39F46C00C12603 /* Debug */,
+				0324E15F1B39F46C00C12603 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0324E1641B39F46C00C12603 /* Build configuration list for PBXNativeTarget "Harmonic-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0324E1601B39F46C00C12603 /* Debug */,
+				0324E1611B39F46C00C12603 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
