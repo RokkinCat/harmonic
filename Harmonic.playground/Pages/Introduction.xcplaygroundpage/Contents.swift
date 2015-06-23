@@ -18,8 +18,8 @@ struct UserModel: HarmonicModel {
 	var lastName: String?
 	
 	init(json: JSONObject) {
-		self.firstName <*> json["first_name"]
-		self.lastName <*> json["last_name"]
+		firstName <*> json["first_name"]
+		lastName <*> json["last_name"]
 	}
 	
 }
@@ -48,4 +48,4 @@ This line above will be nil because `10` isn't a `String`.
 Change some values in the JSON objects above and in the `UserModel` to see how things behave.
 */
 
-
+//: [Next](@next)

@@ -48,12 +48,12 @@ public enum HarmonicError: ErrorType {
 
 extension HarmonicModel {
 	
-	static func parse(json: JSONObject) -> Self {
+	public static func parse(json: JSONObject) -> Self {
 		let model = Self(json: json)
 		return model
 	}
 	
-	static func parse(json: JSONArray) -> [Self] {
+	public static func parse(json: JSONArray) -> [Self] {
 		var models : Array<Self> = []
 		for obj in json {
 			let model = Self(json: obj)
@@ -62,7 +62,7 @@ extension HarmonicModel {
 		return models
 	}
 	
-	static func parse(jsonString : String) throws -> Self {
+	public static func parse(jsonString : String) throws -> Self {
 		do {
 			if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding),
 				json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? JSONObject {
@@ -73,7 +73,7 @@ extension HarmonicModel {
 		throw HarmonicError.CannotParseJSON
 	}
 	
-	static func parse(jsonString : String) throws -> [Self] {
+	public static func parse(jsonString : String) throws -> [Self] {
 		do {
 			if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding),
 				json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? JSONArray {
