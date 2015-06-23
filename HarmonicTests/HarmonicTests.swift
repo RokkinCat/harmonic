@@ -70,7 +70,7 @@ class HarmonicTests: XCTestCase {
         var user : BrokenUserModel = HarmonicModelMaker<BrokenUserModel>().createModel(jsonUser1)
         
         // The good
-        XCTAssertEqual(jsonUser1["first_name"]! as String, user.firstName!, "First names should equal");
+        XCTAssertEqual(jsonUser1["first_name"]! as! String, user.firstName!, "First names should equal");
         
         // The nils
         XCTAssertNil(user.lastName, "Last name should be nil");
@@ -84,21 +84,21 @@ class HarmonicTests: XCTestCase {
     
     func commonUserTest(user : UserModel) {
         // Standard variables
-        XCTAssertEqual(jsonUser1["first_name"]! as String, user.firstName!, "First names should equal")
-        XCTAssertEqual(jsonUser1["last_name"]! as String, user.lastName!, "Last name should equal ")
+        XCTAssertEqual(jsonUser1["first_name"]! as! String, user.firstName!, "First names should equal")
+        XCTAssertEqual(jsonUser1["last_name"]! as! String, user.lastName!, "Last name should equal ")
         
         // Single model assocation
-        XCTAssertEqual(jsonUser1["best_friend"]!["first_name"]! as String, user.bestFriend!.firstName!, "Best friend's first names should equal")
+        XCTAssertEqual(jsonUser1["best_friend"]!["first_name"]! as! String, user.bestFriend!.firstName!, "Best friend's first names should equal")
         
         // Collection models association
-        var firstFriend : Dictionary<String, AnyObject> = jsonUser1["friends"]![0] as Dictionary<String, AnyObject>
+        var firstFriend : Dictionary<String, AnyObject> = jsonUser1["friends"]![0] as! Dictionary<String, AnyObject>
         XCTAssertEqual(jsonUser1["friends"]!.count, user.friends!.count, "Friend's count should equal")
-        XCTAssertEqual(firstFriend["first_name"]! as String, user.friends![0].firstName!, "Friend's first name should be equal")
+        XCTAssertEqual(firstFriend["first_name"]! as! String, user.friends![0].firstName!, "Friend's first name should be equal")
         
         // Formatter function
         XCTAssertNotNil(user.birthday, "Birthday should not be nil")
         
-        var birthdayParts : Array<String> = (jsonUser1["birthday"]! as String).componentsSeparatedByString("-")
+        var birthdayParts : Array<String> = (jsonUser1["birthday"]! as! String).componentsSeparatedByString("-")
         XCTAssertEqual( birthdayParts[0].toInt()! ,  user.birthday!.year(), "Birthdy years should equal")
         XCTAssertEqual( birthdayParts[1].toInt()! ,  user.birthday!.month(), "Birthdy months should equal")
         XCTAssertEqual( birthdayParts[2].toInt()! ,  user.birthday!.day(), "Birthdy days should equal")
@@ -115,7 +115,7 @@ struct MyCustomFormatter {
         let dateStringFormatter = NSDateFormatter()
         dateStringFormatter.dateFormat = "yyyy-MM-dd"
         dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        date = dateStringFormatter.dateFromString(object as String)
+        date = dateStringFormatter.dateFromString(object as! String)
         
         return date
     }
