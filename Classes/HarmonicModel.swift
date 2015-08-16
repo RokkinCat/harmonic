@@ -9,11 +9,11 @@
 import Foundation
 
 // Cause typing things is hard
-typealias JSONObject = Dictionary<String, AnyObject>
-typealias JSONArray = Array<JSONObject>
+public typealias JSONObject = Dictionary<String, AnyObject>
+public typealias JSONArray = Array<JSONObject>
 
 infix operator >>> { associativity left precedence 170 }
-func >>><A, B>(a: A?, f: A -> B?) -> B? {
+public func >>><A, B>(a: A?, f: A -> B?) -> B? {
     if let x = a {
         return f(x)
     } else {
@@ -22,39 +22,39 @@ func >>><A, B>(a: A?, f: A -> B?) -> B? {
 }
 
 infix operator <*> { associativity left precedence 160 }
-func <*><A: HarmonicModel, B>(inout a: Array<A>?, b: B?) {
+public func <*><A: HarmonicModel, B>(inout a: Array<A>?, b: B?) {
     if let c = b as? JSONArray {
 		a = A.parse(c)
     }
 }
 
-func <*><A: HarmonicModel, B>(inout a: A?, b: B?) {
+public func <*><A: HarmonicModel, B>(inout a: A?, b: B?) {
     if let c = b as? JSONObject {
 		a = A.parse(c)
     }
 }
 
-func <*><A, B>(inout a: A?, b: B?) {
+public func <*><A, B>(inout a: A?, b: B?) {
     a = b as? A
 }
 
-protocol HarmonicModel {
+public protocol HarmonicModel {
 	 init(json: JSONObject)
 }
 
 
-enum HarmonicError: ErrorType {
+public enum HarmonicError: ErrorType {
 	case CannotParseJSON
 }
 
-extension HarmonicModel {
+public extension HarmonicModel {
 	
-	static func parse(json: JSONObject) -> Self {
+	public static func parse(json: JSONObject) -> Self {
 		let model = Self(json: json)
 		return model
 	}
 	
-	static func parse(json: JSONArray) -> [Self] {
+	public static func parse(json: JSONArray) -> [Self] {
 		var models : Array<Self> = []
 		for obj in json {
 			let model = Self(json: obj)
@@ -63,7 +63,7 @@ extension HarmonicModel {
 		return models
 	}
 	
-	static func parse(jsonString : String) throws -> Self {
+	public static func parse(jsonString : String) throws -> Self {
 		do {
 			if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding),
 				json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? JSONObject {
@@ -74,7 +74,7 @@ extension HarmonicModel {
 		throw HarmonicError.CannotParseJSON
 	}
 	
-	static func parse(jsonString : String) throws -> [Self] {
+	public static func parse(jsonString : String) throws -> [Self] {
 		do {
 			if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding),
 				json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? JSONArray {
