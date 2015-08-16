@@ -42,6 +42,7 @@ protocol HarmonicModel {
 	 init(json: JSONObject)
 }
 
+
 enum HarmonicError: ErrorType {
 	case CannotParseJSON
 }

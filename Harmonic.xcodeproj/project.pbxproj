@@ -22,6 +22,9 @@
 		03B697931999B80D0001511B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304447F1999792C00F47756 /* UserModel.swift */; };
 		03B697961999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
 		03B697971999B9220001511B /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B697951999B9220001511B /* BrokenUserModel.swift */; };
+		03D5C2ED1B51AB1F00881151 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03D5C2EB1B51AB1F00881151 /* ExampleModel.xcdatamodeld */; };
+		03D5C2EF1B51AD9000881151 /* CoreHarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5C2EE1B51AD9000881151 /* CoreHarmonicModel.swift */; };
+		03D5C2F11B51AE9F00881151 /* CoreUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5C2F01B51AE9F00881151 /* CoreUserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		0304447F1999792C00F47756 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		037DBB7A1B2E577600CD8574 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		03B697951999B9220001511B /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
+		03D5C2EC1B51AB1F00881151 /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleModel.xcdatamodel; sourceTree = "<group>"; };
+		03D5C2EE1B51AD9000881151 /* CoreHarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreHarmonicModel.swift; sourceTree = "<group>"; };
+		03D5C2F01B51AE9F00881151 /* CoreUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreUserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 		0304447C1999770300F47756 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				03D5C2EA1B51AAA900881151 /* CoreData */,
 				0304447D1999771300F47756 /* HarmonicModel.swift */,
 			);
 			path = Classes;
@@ -141,8 +148,18 @@
 				03B697951999B9220001511B /* BrokenUserModel.swift */,
 				03018EF11B2E54BE00F13F41 /* StructUserModel.swift */,
 				037DBB7A1B2E577600CD8574 /* Formatters.swift */,
+				03D5C2F01B51AE9F00881151 /* CoreUserModel.swift */,
 			);
 			name = TestModels;
+			sourceTree = "<group>";
+		};
+		03D5C2EA1B51AAA900881151 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				03D5C2EB1B51AB1F00881151 /* ExampleModel.xcdatamodeld */,
+				03D5C2EE1B51AD9000881151 /* CoreHarmonicModel.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,11 +280,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0304447E1999771300F47756 /* HarmonicModel.swift in Sources */,
+				03D5C2EF1B51AD9000881151 /* CoreHarmonicModel.swift in Sources */,
 				03018EF21B2E54BE00F13F41 /* StructUserModel.swift in Sources */,
 				03044462199976B500F47756 /* ViewController.swift in Sources */,
 				03B697961999B9220001511B /* BrokenUserModel.swift in Sources */,
 				030444801999792C00F47756 /* UserModel.swift in Sources */,
 				03044460199976B500F47756 /* AppDelegate.swift in Sources */,
+				03D5C2F11B51AE9F00881151 /* CoreUserModel.swift in Sources */,
+				03D5C2ED1B51AB1F00881151 /* ExampleModel.xcdatamodeld in Sources */,
 				037DBB7B1B2E577600CD8574 /* Formatters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,6 +500,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		03D5C2EB1B51AB1F00881151 /* ExampleModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				03D5C2EC1B51AB1F00881151 /* ExampleModel.xcdatamodel */,
+			);
+			currentVersion = 03D5C2EC1B51AB1F00881151 /* ExampleModel.xcdatamodel */;
+			name = ExampleModel.xcdatamodeld;
+			path = ../CoreData/ExampleModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 03044452199976B500F47756 /* Project object */;
 }

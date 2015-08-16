@@ -12,9 +12,18 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.justDoStuff()
+		
+		if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+			CoreHarmonicManager.managedContext = appDelegate.managedObjectContext
+		}
+		
+//        justDoStuff()
+		justDoCoreDataStuff()
     }
+	
+	func justDoCoreDataStuff() {
+//		CoreUserModel.query()
+	}
     
     func justDoStuff() {
         self.justModelStuff()
