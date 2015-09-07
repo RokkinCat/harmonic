@@ -18,9 +18,9 @@ class CoreUserModel: CoreHarmonicModel {
 	var birthday: NSDate?
 
 	required init(json: JSONObject) {
-		self.firstName <*> json["first_name"]
-		self.lastName <*> json["last_name"]
-		self.birthday <*> json["birthday"] >>> MyCustomFormatters.toBirthday
+		self.firstName <<< json["first_name"]
+		self.lastName <<< json["last_name"]
+		self.birthday <<< json["birthday"] >>> MyCustomFormatters.toBirthday
 	}
 	
 }

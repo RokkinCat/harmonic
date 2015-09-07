@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "03AE43231B8053EF00F47D4D"
-               BuildableName = "HarmonicFramework.framework"
+               BuildableName = "Harmonic.framework"
                BlueprintName = "HarmonicFramework"
                ReferencedContainer = "container:Harmonic.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "03AE43231B8053EF00F47D4D"
-            BuildableName = "HarmonicFramework.framework"
+            BuildableName = "Harmonic.framework"
             BlueprintName = "HarmonicFramework"
             ReferencedContainer = "container:Harmonic.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "03AE43231B8053EF00F47D4D"
-            BuildableName = "HarmonicFramework.framework"
+            BuildableName = "Harmonic.framework"
             BlueprintName = "HarmonicFramework"
             ReferencedContainer = "container:Harmonic.xcodeproj">
          </BuildableReference>

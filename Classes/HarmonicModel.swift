@@ -21,20 +21,20 @@ public func >>><A, B>(a: A?, f: A -> B?) -> B? {
     }
 }
 
-infix operator <*> { associativity left precedence 160 }
-public func <*><A: HarmonicModel, B>(inout a: Array<A>?, b: B?) {
+infix operator <<< { associativity left precedence 160 }
+public func <<<<A: HarmonicModel, B>(inout a: Array<A>?, b: B?) {
     if let c = b as? JSONArray {
 		a = A.parse(c)
     }
 }
 
-public func <*><A: HarmonicModel, B>(inout a: A?, b: B?) {
+public func <<<<A: HarmonicModel, B>(inout a: A?, b: B?) {
     if let c = b as? JSONObject {
 		a = A.parse(c)
     }
 }
 
-public func <*><A, B>(inout a: A?, b: B?) {
+public func <<<<A, B>(inout a: A?, b: B?) {
     a = b as? A
 }
 
